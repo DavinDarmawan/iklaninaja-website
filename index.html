@@ -11,13 +11,17 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
+    <!-- Overlay for the background animation -->
+    <div class="background-overlay"></div>
+
     <!-- ===== HEADER ===== -->
     <header class="header">
       <div class="container">
         <div class="logo-container">
+          <!-- Logo placeholder, replace with your actual logo -->
           <img
             src="assets/images/cobalogo.png"
-            alt="Logo Utama"
+            alt="Iklaninaja Logo"
             class="brand-logo"
           />
           <a href="#home" class="logo"
@@ -27,7 +31,7 @@
 
         <nav class="navbar">
           <ul class="nav-links">
-            <li><a href="#home" class="nav-link">Home</a></li>
+            <li><a href="#home" class="nav-link active">Home</a></li>
             <li><a href="#layanan" class="nav-link">Layanan</a></li>
             <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
             <li><a href="#testimoni" class="nav-link">Testimoni</a></li>
@@ -78,7 +82,7 @@
         </div>
 
         <div class="services-grid">
-          <!-- Layanan 1 -->
+          <!-- Service 1 -->
           <div class="service-card animate" data-service="logo-design">
             <div class="service-icon">
               <i class="fas fa-paint-brush"></i>
@@ -94,7 +98,7 @@
             <div class="service-hover-effect"></div>
           </div>
 
-          <!-- Layanan 2 -->
+          <!-- Service 2 -->
           <div class="service-card animate" data-service="social-media-kit">
             <div class="service-icon">
               <i class="fas fa-mobile-alt"></i>
@@ -110,7 +114,7 @@
             <div class="service-hover-effect"></div>
           </div>
 
-          <!-- Layanan 3 -->
+          <!-- Service 3 -->
           <div class="service-card animate" data-service="website-umkm">
             <div class="service-icon">
               <i class="fas fa-laptop-code"></i>
@@ -125,7 +129,7 @@
             <div class="service-hover-effect"></div>
           </div>
 
-          <!-- Layanan 4 -->
+          <!-- Service 4 -->
           <div class="service-card animate" data-service="digital-marketing">
             <div class="service-icon">
               <i class="fas fa-bullhorn"></i>
@@ -165,7 +169,11 @@
 
         <div class="portfolio-grid">
           <!-- Item 1 -->
-          <div class="portfolio-item animate" data-category="logo">
+          <div
+            class="portfolio-item animate"
+            data-category="logo"
+            data-id="portfolio-1"
+          >
             <img
               src="https://placehold.co/400x250/3a0ca3/f72585?text=Kedai+Kopi+Budi"
               alt="Portfolio 1"
@@ -173,12 +181,16 @@
             <div class="portfolio-overlay">
               <h3>Kedai Kopi Budi</h3>
               <p>Desain Logo</p>
-              <a href="#" class="portfolio-view">Lihat Detail</a>
+              <a href="#" class="portfolio-view-link">Lihat Detail</a>
             </div>
           </div>
 
           <!-- Item 2 -->
-          <div class="portfolio-item animate" data-category="social">
+          <div
+            class="portfolio-item animate"
+            data-category="social"
+            data-id="portfolio-2"
+          >
             <img
               src="https://placehold.co/400x250/4cc9f0/3a0ca3?text=Homemade+Cookies"
               alt="Portfolio 2"
@@ -186,12 +198,16 @@
             <div class="portfolio-overlay">
               <h3>Homemade Cookies</h3>
               <p>Social Media Kit</p>
-              <a href="#" class="portfolio-view">Lihat Detail</a>
+              <a href="#" class="portfolio-view-link">Lihat Detail</a>
             </div>
           </div>
 
           <!-- Item 3 -->
-          <div class="portfolio-item animate" data-category="website">
+          <div
+            class="portfolio-item animate"
+            data-category="website"
+            data-id="portfolio-3"
+          >
             <img
               src="https://placehold.co/400x250/f72585/ffffff?text=Bengkel+Motor"
               alt="Portfolio 3"
@@ -199,12 +215,16 @@
             <div class="portfolio-overlay">
               <h3>Bengkel Motor Fauzi</h3>
               <p>Website UMKM</p>
-              <a href="#" class="portfolio-view">Lihat Detail</a>
+              <a href="#" class="portfolio-view-link">Lihat Detail</a>
             </div>
           </div>
 
           <!-- Item 4 -->
-          <div class="portfolio-item animate" data-category="logo">
+          <div
+            class="portfolio-item animate"
+            data-category="logo"
+            data-id="portfolio-4"
+          >
             <img
               src="https://placehold.co/400x250/212529/f8f9fa?text=Toko+Baju+Ani"
               alt="Portfolio 4"
@@ -212,12 +232,16 @@
             <div class="portfolio-overlay">
               <h3>Toko Baju Ani</h3>
               <p>Desain Logo</p>
-              <a href="#" class="portfolio-view">Lihat Detail</a>
+              <a href="#" class="portfolio-view-link">Lihat Detail</a>
             </div>
           </div>
 
           <!-- Item 5 -->
-          <div class="portfolio-item animate" data-category="social">
+          <div
+            class="portfolio-item animate"
+            data-category="social"
+            data-id="portfolio-5"
+          >
             <img
               src="https://placehold.co/400x250/4361ee/f72585?text=Catering+Mama+Lia"
               alt="Portfolio 5"
@@ -225,12 +249,16 @@
             <div class="portfolio-overlay">
               <h3>Catering Mama Lia</h3>
               <p>Social Media Kit</p>
-              <a href="#" class="portfolio-view">Lihat Detail</a>
+              <a href="#" class="portfolio-view-link">Lihat Detail</a>
             </div>
           </div>
 
           <!-- Item 6 -->
-          <div class="portfolio-item animate" data-category="website">
+          <div
+            class="portfolio-item animate"
+            data-category="website"
+            data-id="portfolio-6"
+          >
             <img
               src="https://placehold.co/400x250/3a0ca3/4cc9f0?text=Klinik+Kecantikan"
               alt="Portfolio 6"
@@ -238,7 +266,7 @@
             <div class="portfolio-overlay">
               <h3>Klinik Kecantikan Sari</h3>
               <p>Website UMKM</p>
-              <a href="#" class="portfolio-view">Lihat Detail</a>
+              <a href="#" class="portfolio-view-link">Lihat Detail</a>
             </div>
           </div>
         </div>
@@ -261,7 +289,7 @@
           </p>
         </div>
 
-        <div class="testimonial-slider animate">
+        <div class="testimonial-slider-container animate">
           <div class="testimonial-track">
             <!-- Testimonial 1 -->
             <div class="testimonial-card">
@@ -411,10 +439,24 @@
               kecil tampil besar dengan identitas visual yang kuat.
             </p>
             <div class="social-links">
-              <a href="#"><i class="fab fa-instagram"></i></a>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-whatsapp"></i></a>
-              <a href="#"><i class="fab fa-youtube"></i></a>
+              <!-- Instagram Link -->
+              <a href="https://instagram.com/iklaninaja" target="_blank"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <!-- Facebook Link -->
+              <a href="https://facebook.com/iklaninaja" target="_blank"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <!-- WhatsApp Link dengan nomor dan pesan otomatis -->
+              <a
+                href="https://wa.me/6281224215656?text=Halo%20Iklaninaja,%20saya%20tertarik%20dengan%20layanannya."
+                target="_blank"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+              <!-- YouTube Link -->
+              <a href="https://youtube.com/iklaninaja" target="_blank"
+                ><i class="fab fa-youtube"></i
+              ></a>
             </div>
           </div>
 
@@ -447,13 +489,31 @@
       </div>
     </footer>
 
-    <!-- Modal untuk detail layanan -->
+    <!-- Modal for service details -->
     <div id="serviceDetailModal" class="modal">
       <div class="modal-content">
         <span class="close-button">&times;</span>
         <h3 id="modalServiceTitle"></h3>
         <p id="modalServiceDescription"></p>
-        <!-- Tambahkan detail lebih lanjut di sini jika diperlukan -->
+        <button id="modalCloseBtn" class="btn btn-secondary">Tutup</button>
+      </div>
+    </div>
+
+    <!-- Modal for portfolio details -->
+    <div id="portfolioDetailModal" class="modal">
+      <div class="modal-content portfolio-modal-content">
+        <span class="close-button">&times;</span>
+        <img
+          id="modalPortfolioImage"
+          src=""
+          alt="Portfolio Image"
+          class="portfolio-modal-image"
+        />
+        <h3 id="modalPortfolioTitle"></h3>
+        <p id="modalPortfolioDescription"></p>
+        <button id="modalPortfolioCloseBtn" class="btn btn-secondary">
+          Tutup
+        </button>
       </div>
     </div>
 

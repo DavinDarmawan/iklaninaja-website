@@ -21,7 +21,7 @@ function setActiveNavLink() {
 
   let currentSectionId = "";
   sections.forEach((section) => {
-    const sectionTop = section.offsetTop - headerHeight - 1; // Subtract header height to adjust
+    const sectionTop = section.offsetTop - headerHeight - 1;
     if (window.scrollY >= sectionTop) {
       currentSectionId = section.getAttribute("id");
     }
@@ -134,7 +134,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.querySelector(".slider-next");
   const dotsContainer = document.querySelector(".slider-dots");
 
-  if (!track || cards.length === 0) return; // Prevent errors if elements are not found
+  if (!track || cards.length === 0) return;
 
   let currentIndex = 0;
   const cardCount = cards.length;
@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", function () {
     updateDots();
     setTimeout(() => {
       isTransitioning = false;
-    }, 500); // Reset transition state
+    }, 500);
   }
 
   // Update dot indicators
@@ -287,13 +287,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
-// SERVICE DETAIL MODAL
+// ===== MODAL FUNCTIONALITY =====
 document.addEventListener("DOMContentLoaded", function () {
+  // Service Modal
   const serviceDetailModal = document.getElementById("serviceDetailModal");
-  const serviceTitle = document.getElementById("modalServiceTitle");
-  const serviceDescription = document.getElementById("modalServiceDescription");
+  const modalServiceTitle = document.getElementById("modalServiceTitle");
+  const modalServiceDescription = document.getElementById(
+    "modalServiceDescription"
+  );
   const serviceLinks = document.querySelectorAll(".service-link");
-  const closeButton = serviceDetailModal.querySelector(".close-button");
+  const closeServiceModalButton =
+    serviceDetailModal.querySelector(".close-button");
+  const modalCloseServiceBtn = document.getElementById("modalCloseBtn");
 
   const servicesData = {
     "logo-design": {
@@ -325,20 +330,101 @@ document.addEventListener("DOMContentLoaded", function () {
       const data = servicesData[serviceType];
 
       if (data) {
-        serviceTitle.textContent = data.title;
-        serviceDescription.textContent = data.description;
+        modalServiceTitle.textContent = data.title;
+        modalServiceDescription.textContent = data.description;
         serviceDetailModal.style.display = "block";
       }
     });
   });
 
-  closeButton.onclick = function () {
+  function closeServiceModal() {
     serviceDetailModal.style.display = "none";
+  }
+
+  closeServiceModalButton.onclick = closeServiceModal;
+  modalCloseServiceBtn.onclick = closeServiceModal;
+
+  // Portfolio Modal
+  const portfolioDetailModal = document.getElementById("portfolioDetailModal");
+  const modalPortfolioImage = document.getElementById("modalPortfolioImage");
+  const modalPortfolioTitle = document.getElementById("modalPortfolioTitle");
+  const modalPortfolioDescription = document.getElementById(
+    "modalPortfolioDescription"
+  );
+  const portfolioLinks = document.querySelectorAll(".portfolio-view-link");
+  const closePortfolioModalButton =
+    portfolioDetailModal.querySelector(".close-button");
+  const modalClosePortfolioBtn = document.getElementById(
+    "modalPortfolioCloseBtn"
+  );
+
+  const portfolioData = {
+    "portfolio-1": {
+      title: "Kedai Kopi Budi",
+      description:
+        "Desain logo profesional dan modern untuk Kedai Kopi Budi, menciptakan identitas visual yang kuat dan mudah diingat oleh pelanggan.",
+      image: "https://placehold.co/600x400/3a0ca3/f72585?text=Kedai+Kopi+Budi",
+    },
+    "portfolio-2": {
+      title: "Homemade Cookies",
+      description:
+        "Pembuatan social media kit lengkap untuk Homemade Cookies, termasuk template untuk feed, story, dan highlight Instagram yang konsisten dan menarik.",
+      image: "https://placehold.co/600x400/4cc9f0/3a0ca3?text=Homemade+Cookies",
+    },
+    "portfolio-3": {
+      title: "Bengkel Motor Fauzi",
+      description:
+        "Pengembangan website UMKM yang responsif dan informatif untuk Bengkel Motor Fauzi, memudahkan pelanggan untuk melihat layanan dan melakukan booking online.",
+      image: "https://placehold.co/600x400/f72585/ffffff?text=Bengkel+Motor",
+    },
+    "portfolio-4": {
+      title: "Toko Baju Ani",
+      description:
+        "Desain logo yang unik dan stylish untuk Toko Baju Ani, memperkuat branding toko dan menarik target pasar yang lebih luas.",
+      image: "https://placehold.co/600x400/212529/f8f9fa?text=Toko+Baju+Ani",
+    },
+    "portfolio-5": {
+      title: "Catering Mama Lia",
+      description:
+        "Paket social media branding untuk Catering Mama Lia, fokus pada visual yang menggugah selera dan strategi konten untuk meningkatkan engagement.",
+      image:
+        "https://placehold.co/600x400/4361ee/f72585?text=Catering+Mama+Lia",
+    },
+    "portfolio-6": {
+      title: "Klinik Kecantikan Sari",
+      description:
+        "Website profesional untuk Klinik Kecantikan Sari, menampilkan layanan, testimoni, dan informasi kontak secara elegan, meningkatkan kepercayaan pelanggan.",
+      image: "httpshold.co/600x400/3a0ca3/4cc9f0?text=Klinik+Kecantikan",
+    },
   };
+
+  portfolioLinks.forEach((link) => {
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      const portfolioId = this.closest(".portfolio-item").dataset.id;
+      const data = portfolioData[portfolioId];
+      if (data) {
+        modalPortfolioImage.src = data.image;
+        modalPortfolioTitle.textContent = data.title;
+        modalPortfolioDescription.textContent = data.description;
+        portfolioDetailModal.style.display = "block";
+      }
+    });
+  });
+
+  function closePortfolioModal() {
+    portfolioDetailModal.style.display = "none";
+  }
+
+  closePortfolioModalButton.onclick = closePortfolioModal;
+  modalClosePortfolioBtn.onclick = closePortfolioModal;
 
   window.onclick = function (event) {
     if (event.target == serviceDetailModal) {
-      serviceDetailModal.style.display = "none";
+      closeServiceModal();
+    }
+    if (event.target == portfolioDetailModal) {
+      closePortfolioModal();
     }
   };
 });

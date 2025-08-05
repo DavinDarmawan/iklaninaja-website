@@ -29,6 +29,7 @@ body {
   background-color: var(--light);
   color: var(--text);
   overflow-x: hidden;
+  position: relative;
 }
 
 h1,
@@ -71,6 +72,7 @@ button {
 
 section {
   padding: 5rem 0;
+  position: relative;
 }
 
 .section-header {
@@ -169,7 +171,7 @@ section {
   z-index: -1;
 }
 
-/* ===== ANIMATIONS ===== */
+/* ===== ANIMATIONS & BACKGROUND ===== */
 @keyframes pulse {
   0%,
   100% {
@@ -182,6 +184,25 @@ section {
 
 .pulse {
   animation: pulse 2s infinite;
+}
+
+.background-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      135deg,
+      rgba(67, 97, 238, 0.5) 0%,
+      rgba(58, 12, 163, 0.5) 100%
+    ),
+    url("https://placehold.co/1920x1080/4361ee/3a0ca3?text=Cool+Geometric+Pattern");
+  background-size: cover;
+  background-attachment: fixed;
+  z-index: -2;
+  opacity: 0.1;
+  transition: opacity 0.5s ease;
 }
 
 /* ===== HEADER & NAVBAR ===== */
@@ -374,6 +395,7 @@ section {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  border: 1px solid #eee;
 }
 
 .service-card::before {
@@ -446,6 +468,7 @@ section {
   color: var(--primary);
   font-weight: 600;
   transition: var(--transition);
+  cursor: pointer;
 }
 
 .service-hover-effect {
@@ -560,7 +583,7 @@ section {
   transition: transform 0.3s 0.1s;
 }
 
-.portfolio-view {
+.portfolio-view-link {
   color: var(--white);
   font-weight: 600;
   align-self: flex-start;
@@ -568,11 +591,12 @@ section {
   border-bottom: 2px solid var(--accent);
   transform: translateY(20px);
   transition: transform 0.3s 0.2s;
+  cursor: pointer;
 }
 
 .portfolio-item:hover .portfolio-overlay h3,
 .portfolio-item:hover .portfolio-overlay p,
-.portfolio-item:hover .portfolio-view {
+.portfolio-item:hover .portfolio-view-link {
   transform: translateY(0);
 }
 
@@ -583,12 +607,14 @@ section {
   overflow: hidden;
 }
 
-.testimonial-slider {
+.testimonial-slider-container {
   position: relative;
   max-width: 1000px;
   margin: 3rem auto 0;
-  padding: 0 1rem;
   overflow: hidden;
+  border-radius: 15px;
+  box-shadow: var(--shadow);
+  padding: 1rem;
 }
 
 .testimonial-track {
@@ -605,15 +631,29 @@ section {
 }
 
 .testimonial-content {
-  background-color: var(--white);
+  background-color: var(--light);
   border-radius: 15px;
   padding: 2rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   position: relative;
   margin-bottom: 1.5rem;
-  min-height: 150px; /* Menambah tinggi minimal agar teks tidak terpotong */
+  /* Disesuaikan untuk mencegah teks terpotong */
+  min-height: 200px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+}
+
+.testimonial-content p {
+  font-style: italic;
+  color: var(--text);
+  /* Tambahkan padding di samping untuk memastikan teks tidak terlalu lebar */
+  padding: 0 2rem;
+  margin-bottom: 0;
+  /* Menggunakan flex-grow untuk mengisi ruang yang tersedia */
+  flex-grow: 1;
+  /* Tambahkan properti ini untuk mengatur wrapping dan menghindari pemotongan */
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 .quote-icon {
@@ -631,18 +671,11 @@ section {
   font-size: 1.2rem;
 }
 
-.testimonial-content p {
-  font-style: italic;
-  color: var(--text-light);
-  padding-left: 2rem;
-  margin-bottom: 0;
-  flex-grow: 1; /* Memastikan p mengambil ruang yang tersedia */
-}
-
 .testimonial-author {
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding-left: 2rem;
 }
 
 .testimonial-author img {
@@ -786,57 +819,86 @@ footer {
   font-size: 0.9rem;
 }
 
-/* ===== ANIMATION STYLES ===== */
-.animate {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.5s ease;
+/* ===== MODAL STYLES ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1001;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  padding-top: 60px;
 }
 
-.animate.animated {
-  opacity: 1;
-  transform: translateY(0);
+.modal-content {
+  background-color: var(--white);
+  margin: 5% auto;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  text-align: center;
 }
 
-/* Delay untuk animasi */
-.services-grid .service-card:nth-child(1) {
-  transition-delay: 0.1s;
+.portfolio-modal-content {
+  text-align: left;
 }
 
-.services-grid .service-card:nth-child(2) {
-  transition-delay: 0.2s;
+.portfolio-modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 1rem;
 }
 
-.services-grid .service-card:nth-child(3) {
-  transition-delay: 0.3s;
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
 }
 
-.services-grid .service-card:nth-child(4) {
-  transition-delay: 0.4s;
+.close-button {
+  color: var(--dark);
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
 }
 
-.portfolio-grid .portfolio-item:nth-child(1) {
-  transition-delay: 0.1s;
+.close-button:hover,
+.close-button:focus {
+  color: var(--accent);
 }
 
-.portfolio-grid .portfolio-item:nth-child(2) {
-  transition-delay: 0.2s;
+.modal-content h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
 }
 
-.portfolio-grid .portfolio-item:nth-child(3) {
-  transition-delay: 0.3s;
+.modal-content p {
+  color: var(--text-light);
+  margin-bottom: 2rem;
 }
 
-.portfolio-grid .portfolio-item:nth-child(4) {
-  transition-delay: 0.4s;
-}
-
-.portfolio-grid .portfolio-item:nth-child(5) {
-  transition-delay: 0.5s;
-}
-
-.portfolio-grid .portfolio-item:nth-child(6) {
-  transition-delay: 0.6s;
+#modalCloseBtn,
+#modalPortfolioCloseBtn {
+  margin-top: 1rem;
 }
 
 /* ===== RESPONSIVE STYLES ===== */
@@ -858,15 +920,17 @@ footer {
     justify-content: center;
   }
 
+  .testimonial-slider-container {
+    padding: 0;
+  }
+
   .testimonial-card {
-    min-width: 50%;
+    min-width: 100%;
+    padding: 0 1rem;
   }
+
   .testimonial-content {
-    margin: 0;
-    min-height: 180px; /* Menambah tinggi minimal untuk tablet */
-  }
-  .testimonial-author {
-    margin-left: 0;
+    min-height: 200px;
   }
 }
 
@@ -918,8 +982,11 @@ footer {
     transform: rotate(-45deg) translate(5px, -5px);
   }
 
-  .testimonial-card {
-    min-width: 100%;
+  .footer-section {
+    text-align: center;
+  }
+  .newsletter-form {
+    justify-content: center;
   }
 }
 
