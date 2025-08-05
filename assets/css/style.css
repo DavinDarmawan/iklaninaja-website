@@ -770,6 +770,28 @@ footer {
   color: #ddd;
 }
 
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+/* Perbaikan untuk ikon media sosial */
+.social-links a {
+  font-size: 1.8rem; /* Ukuran ikon diperbesar */
+  color: #ddd;
+  transition: var(--transition);
+  padding: 0.5rem; /* Menambah padding untuk area sentuh yang lebih besar */
+  border-radius: 50%; /* Membuat area sentuh bulat */
+}
+
+.social-links a:hover {
+  color: var(--accent);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
 .footer-links li {
   margin-bottom: 0.8rem;
 }
@@ -938,19 +960,19 @@ footer {
     padding: 0 1.5rem;
   }
 
-  /* Mengatur ulang flexbox untuk navbar pada tampilan mobile */
   .navbar {
     display: flex;
     justify-content: flex-end;
     align-items: center;
     position: relative;
-    padding-left: 1rem; /* Menambahkan padding agar tidak terlalu mepet ke kiri */
+    padding-left: 1rem;
   }
 
   /* .logo-container {} */
 
   .hamburger {
     display: flex;
+    /* Menghapus properti order */
   }
 
   .nav-links {
@@ -1002,5 +1024,9 @@ footer {
 
   .portfolio-grid {
     grid-template-columns: 1fr;
+  }
+
+  .social-links {
+    justify-content: center; /* Memastikan ikon di tengah pada layar kecil */
   }
 }
