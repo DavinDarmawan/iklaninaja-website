@@ -132,64 +132,54 @@ document.addEventListener("DOMContentLoaded", function () {
   const carouselTrack = document.querySelector(".carousel-track");
   const prevBtn = document.getElementById("prevBtn");
   const nextBtn = document.getElementById("nextBtn");
-  const cards = document.querySelectorAll(".testimonial-card-wrapper");
-  const cardCount = cards.length;
-  const originalCardCount = cards.length; // Jumlah card asli sebelum digandakan
-
-  // Duplicate cards for infinite scroll effect
-  cards.forEach((card) => {
-    const clone = card.cloneNode(true);
-    carouselTrack.appendChild(clone);
-  });
+  const cardWrappers = document.querySelectorAll(".testimonial-card-wrapper");
+  const originalCardCount = cardWrappers.length;
 
   let currentIndex = 0;
   let isMoving = false;
 
-  const getCardWidth = () => {
-    // Memastikan lebar card dihitung dengan benar termasuk padding/margin
-    const firstCard = cards[0];
-    if (firstCard) {
-      const style = getComputedStyle(firstCard);
-      return (
-        firstCard.offsetWidth +
-        parseFloat(style.marginLeft) +
-        parseFloat(style.marginRight) +
-        parseFloat(style.paddingLeft) +
-        parseFloat(style.paddingRight)
-      );
-    }
-    return 0;
-  };
+  // Duplicate cards for infinite scroll effect
+  cardWrappers.forEach((card) => {
+    const clone = card.cloneNode(true);
+    carouselTrack.appendChild(clone);
+  });
 
-  const moveCarousel = () => {
+  const moveCarousel = (direction) => {
     if (isMoving) return;
     isMoving = true;
 
-    const cardWidth = getCardWidth();
-    const scrollAmount = cardWidth;
+    // Update index based on direction
+    currentIndex += direction;
+
+    // Get live dimensions
+    const cards = document.querySelectorAll(".testimonial-card-wrapper");
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth;
+    const containerWidth = carouselContainer.offsetWidth;
+    const offset = (containerWidth - cardWidth) / 2;
 
     // Animate the scroll
     carouselTrack.style.transition = "transform 0.5s ease-in-out";
     carouselTrack.style.transform = `translateX(-${
-      currentIndex * scrollAmount
+      currentIndex * cardWidth - offset
     }px)`;
 
-    // After transition, reset to create infinite loop effect
+    // Logic for infinite loop
     carouselTrack.addEventListener(
       "transitionend",
       () => {
         isMoving = false;
-        // Jika sudah mencapai salinan terakhir, lompat kembali ke posisi awal
         if (currentIndex >= originalCardCount) {
           carouselTrack.style.transition = "none";
           currentIndex = 0;
-          carouselTrack.style.transform = `translateX(0)`;
+          carouselTrack.style.transform = `translateX(-${
+            currentIndex * cardWidth - offset
+          }px)`;
         } else if (currentIndex < 0) {
-          // Jika geser ke kiri dari posisi awal, lompat ke salinan terakhir
           carouselTrack.style.transition = "none";
           currentIndex = originalCardCount - 1;
           carouselTrack.style.transform = `translateX(-${
-            currentIndex * scrollAmount
+            currentIndex * cardWidth - offset
           }px)`;
         }
       },
@@ -199,26 +189,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event listeners for next and previous buttons
   if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      currentIndex = currentIndex + 1;
-      moveCarousel();
-    });
+    nextBtn.addEventListener("click", () => moveCarousel(1));
   }
 
   if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      currentIndex = currentIndex - 1;
-      moveCarousel();
-    });
+    prevBtn.addEventListener("click", () => moveCarousel(-1));
   }
 
-  // Handle resizing to update card width
-  window.addEventListener("resize", () => {
-    // Reset carousel position on resize to avoid broken layout
-    carouselTrack.style.transition = "none";
-    currentIndex = 0;
-    carouselTrack.style.transform = `translateX(0)`;
-  });
+  // Initial position on load and update on resize
+  const initialPosition = () => {
+    const cards = document.querySelectorAll(".testimonial-card-wrapper");
+    if (cards.length === 0) return;
+    const cardWidth = cards[0].offsetWidth;
+    const containerWidth = carouselContainer.offsetWidth;
+    const offset = (containerWidth - cardWidth) / 2;
+    carouselTrack.style.transform = `translateX(${offset}px)`;
+  };
+
+  window.addEventListener("load", initialPosition);
+  window.addEventListener("resize", initialPosition);
 });
 
 // ===== MODAL FUNCTIONALITY =====
