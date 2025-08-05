@@ -1,4 +1,7 @@
-/* ===== VARIABEL & FONTS ===== */
+/* ===== FONT IMPORTS & DEFINITION ===== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
+
+/* ===== VARIABEL ===== */
 :root {
   --primary: #4361ee;
   --secondary: #3a0ca3;
@@ -13,8 +16,6 @@
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
 
 /* ===== BASE STYLES ===== */
 * {
