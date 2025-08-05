@@ -394,7 +394,8 @@ document.addEventListener("DOMContentLoaded", function () {
       title: "Klinik Kecantikan Sari",
       description:
         "Website profesional untuk Klinik Kecantikan Sari, menampilkan layanan, testimoni, dan informasi kontak secara elegan, meningkatkan kepercayaan pelanggan.",
-      image: "httpshold.co/600x400/3a0ca3/4cc9f0?text=Klinik+Kecantikan",
+      image:
+        "https://placehold.co/600x400/3a0ca3/4cc9f0?text=Klinik+Kecantikan",
     },
   };
 

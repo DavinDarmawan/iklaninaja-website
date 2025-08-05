@@ -1,7 +1,4 @@
-/* ===== FONT IMPORTS & DEFINITION ===== */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
-
-/* ===== VARIABEL ===== */
+/* ===== VARIABEL & FONTS ===== */
 :root {
   --primary: #4361ee;
   --secondary: #3a0ca3;
@@ -16,6 +13,8 @@
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
 
 /* ===== BASE STYLES ===== */
 * {
@@ -622,6 +621,8 @@ section {
   display: flex;
   transition: transform 0.5s ease;
   width: 100%;
+  min-width: 100%;
+  align-items: stretch;
 }
 
 .testimonial-card {
@@ -629,6 +630,8 @@ section {
   flex-shrink: 0;
   box-sizing: border-box;
   padding: 0 15px;
+  display: flex;
+  align-items: stretch;
 }
 
 .testimonial-content {
@@ -637,17 +640,17 @@ section {
   padding: 2rem;
   position: relative;
   margin-bottom: 1.5rem;
-  min-height: 200px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  height: auto; /* Mengatur tinggi otomatis untuk fleksibilitas */
 }
 
 .testimonial-content p {
   font-style: italic;
   color: var(--text);
-  padding: 0 2rem;
-  margin-bottom: 0;
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
   flex-grow: 1;
   white-space: normal;
   overflow-wrap: break-word;
@@ -668,30 +671,30 @@ section {
   font-size: 1.2rem;
 }
 
-.testimonial-author {
+.testimonial-author-info {
   display: flex;
   align-items: center;
   gap: 1rem;
-  padding-left: 2rem;
 }
 
-.testimonial-author img {
+.testimonial-author-info .testimonial-author-img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
 
-.author-info h4 {
+.author-details h4 {
   font-family: "Poppins", sans-serif;
   font-size: 1.1rem;
   margin-bottom: 0.3rem;
+  line-height: 1;
 }
 
-.author-info p {
+.author-details p {
   color: var(--text-light);
   font-size: 0.9rem;
-  margin-bottom: 0.3rem;
+  margin-bottom: 0;
 }
 
 .rating {
@@ -779,7 +782,6 @@ footer {
   flex-wrap: wrap;
 }
 
-/* Perbaikan untuk ikon media sosial */
 .social-links a {
   font-size: 1.8rem;
   color: #ddd;
@@ -943,13 +945,23 @@ footer {
     padding: 0;
   }
 
+  .testimonial-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    align-items: stretch;
+  }
+
   .testimonial-card {
     min-width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
     padding: 0 1rem;
   }
 
   .testimonial-content {
-    min-height: 200px;
+    min-height: auto;
+    height: 100%;
   }
 }
 
@@ -965,10 +977,6 @@ footer {
     display: flex;
     align-items: center;
     width: 100%;
-  }
-
-  .logo-container {
-    /* Menghapus properti order */
   }
 
   .hamburger {
@@ -1011,6 +1019,25 @@ footer {
   }
   .newsletter-form {
     justify-content: center;
+  }
+
+  .testimonial-content {
+    min-height: auto;
+    padding: 1.5rem;
+    box-sizing: border-box;
+    text-align: left;
+    height: 100%;
+  }
+
+  .testimonial-content p {
+    padding: 0;
+    text-align: left;
+    min-width: 0;
+  }
+
+  .testimonial-author {
+    padding-left: 0;
+    margin-top: 1rem;
   }
 }
 
