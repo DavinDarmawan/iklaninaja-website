@@ -126,165 +126,99 @@ if (filterButtons.length > 0 && portfolioItems.length > 0) {
   });
 }
 
-// Testimonial Slider Functionality
+// Testimonial infinite scroll and manual navigation
 document.addEventListener("DOMContentLoaded", function () {
-  const track = document.querySelector(".testimonial-track");
-  const cards = document.querySelectorAll(".testimonial-card");
-  const prevBtn = document.querySelector(".slider-prev");
-  const nextBtn = document.querySelector(".slider-next");
-  const dotsContainer = document.querySelector(".slider-dots");
+  const carouselContainer = document.querySelector(".carousel-container");
+  const carouselTrack = document.querySelector(".carousel-track");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const cards = document.querySelectorAll(".testimonial-card-wrapper");
+  const cardCount = cards.length;
+  const originalCardCount = cards.length; // Jumlah card asli sebelum digandakan
 
-  if (!track || cards.length === 0) return;
+  // Duplicate cards for infinite scroll effect
+  cards.forEach((card) => {
+    const clone = card.cloneNode(true);
+    carouselTrack.appendChild(clone);
+  });
 
   let currentIndex = 0;
-  const cardCount = cards.length;
-  let isTransitioning = false;
+  let isMoving = false;
 
-  // Create dots
-  dotsContainer.innerHTML = "";
-  cards.forEach((_, index) => {
-    const dot = document.createElement("div");
-    dot.classList.add("dot");
-    if (index === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => {
-      goToSlide(index);
-    });
-    dotsContainer.appendChild(dot);
-  });
-  const dots = document.querySelectorAll(".dot");
-
-  // Clone first and last cards for infinite loop
-  const firstClone = cards[0].cloneNode(true);
-  const lastClone = cards[cardCount - 1].cloneNode(true);
-  firstClone.id = "first-clone";
-  lastClone.id = "last-clone";
-
-  track.appendChild(firstClone);
-  track.insertBefore(lastClone, cards[0]);
-
-  // Set initial position
-  track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
-
-  // Handle transitions
-  track.addEventListener("transitionend", () => {
-    isTransitioning = false;
-    const currentCard = track.children[currentIndex + 1];
-    if (currentCard && currentCard.id === "first-clone") {
-      track.style.transition = "none";
-      currentIndex = 0;
-      track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
-      setTimeout(() => {
-        track.style.transition = "transform 0.5s ease";
-      }, 50);
+  const getCardWidth = () => {
+    // Memastikan lebar card dihitung dengan benar termasuk padding/margin
+    const firstCard = cards[0];
+    if (firstCard) {
+      const style = getComputedStyle(firstCard);
+      return (
+        firstCard.offsetWidth +
+        parseFloat(style.marginLeft) +
+        parseFloat(style.marginRight) +
+        parseFloat(style.paddingLeft) +
+        parseFloat(style.paddingRight)
+      );
     }
-    if (currentCard && currentCard.id === "last-clone") {
-      track.style.transition = "none";
-      currentIndex = cardCount - 1;
-      track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
-      setTimeout(() => {
-        track.style.transition = "transform 0.5s ease";
-      }, 50);
-    }
-    updateDots();
-  });
+    return 0;
+  };
 
-  // Next slide
-  nextBtn.addEventListener("click", () => {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    currentIndex++;
-    track.style.transition = "transform 0.5s ease";
-    track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
-  });
+  const moveCarousel = () => {
+    if (isMoving) return;
+    isMoving = true;
 
-  // Previous slide
-  prevBtn.addEventListener("click", () => {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    currentIndex--;
-    track.style.transition = "transform 0.5s ease";
-    track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
-  });
+    const cardWidth = getCardWidth();
+    const scrollAmount = cardWidth;
 
-  // Go to specific slide
-  function goToSlide(index) {
-    if (isTransitioning) return;
-    isTransitioning = true;
-    currentIndex = index;
-    track.style.transition = "transform 0.5s ease";
-    track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
-    updateDots();
-    setTimeout(() => {
-      isTransitioning = false;
-    }, 500);
-  }
+    // Animate the scroll
+    carouselTrack.style.transition = "transform 0.5s ease-in-out";
+    carouselTrack.style.transform = `translateX(-${
+      currentIndex * scrollAmount
+    }px)`;
 
-  // Update dot indicators
-  function updateDots() {
-    dots.forEach((dot, index) => {
-      dot.classList.remove("active");
-      if (index === currentIndex) {
-        dot.classList.add("active");
-      }
-    });
-  }
-
-  // Auto slide
-  let autoSlide = setInterval(() => {
-    if (!isTransitioning) {
-      nextBtn.click();
-    }
-  }, 5000);
-
-  // Pause on hover
-  const slider = document.querySelector(".testimonials");
-  slider.addEventListener("mouseenter", () => {
-    clearInterval(autoSlide);
-  });
-
-  slider.addEventListener("mouseleave", () => {
-    autoSlide = setInterval(() => {
-      if (!isTransitioning) {
-        nextBtn.click();
-      }
-    }, 5000);
-  });
-
-  // Touch support for mobile
-  let touchStartX = 0;
-  let touchEndX = 0;
-
-  track.addEventListener(
-    "touchstart",
-    (e) => {
-      touchStartX = e.changedTouches[0].screenX;
-      clearInterval(autoSlide);
-    },
-    { passive: true }
-  );
-
-  track.addEventListener(
-    "touchend",
-    (e) => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-      autoSlide = setInterval(() => {
-        if (!isTransitioning) {
-          nextBtn.click();
+    // After transition, reset to create infinite loop effect
+    carouselTrack.addEventListener(
+      "transitionend",
+      () => {
+        isMoving = false;
+        // Jika sudah mencapai salinan terakhir, lompat kembali ke posisi awal
+        if (currentIndex >= originalCardCount) {
+          carouselTrack.style.transition = "none";
+          currentIndex = 0;
+          carouselTrack.style.transform = `translateX(0)`;
+        } else if (currentIndex < 0) {
+          // Jika geser ke kiri dari posisi awal, lompat ke salinan terakhir
+          carouselTrack.style.transition = "none";
+          currentIndex = originalCardCount - 1;
+          carouselTrack.style.transform = `translateX(-${
+            currentIndex * scrollAmount
+          }px)`;
         }
-      }, 5000);
-    },
-    { passive: true }
-  );
+      },
+      { once: true }
+    );
+  };
 
-  function handleSwipe() {
-    if (touchEndX < touchStartX - 50) {
-      nextBtn.click();
-    }
-    if (touchEndX > touchStartX + 50) {
-      prevBtn.click();
-    }
+  // Event listeners for next and previous buttons
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      currentIndex = currentIndex + 1;
+      moveCarousel();
+    });
   }
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      currentIndex = currentIndex - 1;
+      moveCarousel();
+    });
+  }
+
+  // Handle resizing to update card width
+  window.addEventListener("resize", () => {
+    // Reset carousel position on resize to avoid broken layout
+    carouselTrack.style.transition = "none";
+    currentIndex = 0;
+    carouselTrack.style.transform = `translateX(0)`;
+  });
 });
 
 // ===== MODAL FUNCTIONALITY =====

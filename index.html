@@ -8,6 +8,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
@@ -291,105 +293,151 @@
       </div>
     </section>
 
-    <!-- ===== TESTIMONIALS SECTION ===== -->
-    <section class="testimonials" id="testimoni">
-      <div class="container">
-        <div class="section-header animate">
-          <h2 class="section-title">
-            Apa Kata <span class="highlight">Klien</span> Kami?
+    <!-- ===== TESTIMONIALS SECTION - REVAMPED ===== -->
+    <section class="testimonials py-20 bg-white" id="testimoni">
+      <div class="container mx-auto px-4">
+        <div class="section-header text-center mb-12">
+          <h2 class="text-3xl lg:text-4xl font-righteous text-gray-800 animate">
+            Apa Kata <span class="text-accent">Klien</span> Kami?
           </h2>
-          <p class="section-subtitle">
+          <p class="text-gray-500 max-w-2xl mx-auto mt-4 animate">
             Dengar langsung dari pelaku UMKM yang sudah menggunakan jasa kami
           </p>
         </div>
 
-        <!-- Perubahan besar di sini: Struktur Testimoni baru -->
-        <div class="testimonial-slider-container animate">
-          <div class="testimonial-track">
+        <div class="carousel-container overflow-hidden relative">
+          <div class="carousel-track flex">
             <!-- Testimonial 1 -->
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p>
-                  "Branding dari Iklaninaja bikin kedai kopi saya terlihat
-                  seperti franchise besar. Pelanggan baru selalu bertanya apakah
-                  ini cabang dari brand ternama!"
-                </p>
-                <div class="testimonial-author-info">
+            <div
+              class="testimonial-card-wrapper flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-4"
+            >
+              <div
+                class="testimonial-card bg-white shadow-lg rounded-2xl p-6 transition-all hover:transform hover:scale-105 h-full flex flex-col justify-between"
+              >
+                <div class="relative">
+                  <i
+                    class="fa fa-quote-left text-accent text-3xl opacity-20 absolute -top-2 left-2"
+                  ></i>
+                  <p class="mt-4 text-gray-700 text-sm md:text-base italic">
+                    "Branding dari Iklaninaja bikin kedai kopi saya terlihat
+                    seperti franchise besar. Pelanggan baru selalu bertanya
+                    apakah ini cabang dari brand ternama!"
+                  </p>
+                </div>
+                <div class="testimonial-author flex items-center mt-6">
                   <img
                     src="https://placehold.co/60x60/f72585/ffffff?text=BS"
                     alt="Budi Santoso"
-                    class="testimonial-author-img"
+                    class="rounded-full w-12 h-12 object-cover"
                   />
-                  <div class="author-details">
-                    <h4>Budi Santoso</h4>
-                    <p>Pemilik Kedai Kopi Budi</p>
+                  <div class="ml-4">
+                    <h4 class="text-gray-900 font-semibold text-base">
+                      Budi Santoso
+                    </h4>
+                    <p class="text-sm text-gray-500">Pemilik Kedai Kopi Budi</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Testimonial 2 -->
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p>
-                  "Social media kit mereka sangat membantu. Sekarang produk saya
-                  terlihat premium di Instagram dan penjualan meningkat 40%
-                  dalam sebulan! Sangat direkomendasikan untuk UMKM yang ingin
-                  naik kelas."
-                </p>
-                <div class="testimonial-author-info">
+            <div
+              class="testimonial-card-wrapper flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-4"
+            >
+              <div
+                class="testimonial-card bg-white shadow-lg rounded-2xl p-6 transition-all hover:transform hover:scale-105 h-full flex flex-col justify-between"
+              >
+                <div class="relative">
+                  <i
+                    class="fa fa-quote-left text-accent text-3xl opacity-20 absolute -top-2 left-2"
+                  ></i>
+                  <p class="mt-4 text-gray-700 text-sm md:text-base italic">
+                    "Social media kit mereka sangat membantu. Sekarang produk
+                    saya terlihat premium di Instagram dan penjualan meningkat
+                    40% dalam sebulan!"
+                  </p>
+                </div>
+                <div class="testimonial-author flex items-center mt-6">
                   <img
                     src="https://placehold.co/60x60/4cc9f0/ffffff?text=SA"
                     alt="Siti Aminah"
-                    class="testimonial-author-img"
+                    class="rounded-full w-12 h-12 object-cover"
                   />
-                  <div class="author-details">
-                    <h4>Siti Aminah</h4>
-                    <p>Pemilik Homemade Cookies</p>
+                  <div class="ml-4">
+                    <h4 class="text-gray-900 font-semibold text-base">
+                      Siti Aminah
+                    </h4>
+                    <p class="text-sm text-gray-500">
+                      Pemilik Homemade Cookies
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Testimonial 3 -->
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p>
-                  "Website dari Iklaninaja membuat bengkel saya terlihat
-                  profesional dan modern. Sekarang banyak pelanggan yang booking
-                  service via website, sangat efisien!"
-                </p>
-                <div class="testimonial-author-info">
+            <div
+              class="testimonial-card-wrapper flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-4"
+            >
+              <div
+                class="testimonial-card bg-white shadow-lg rounded-2xl p-6 transition-all hover:transform hover:scale-105 h-full flex flex-col justify-between"
+              >
+                <div class="relative">
+                  <i
+                    class="fa fa-quote-left text-accent text-3xl opacity-20 absolute -top-2 left-2"
+                  ></i>
+                  <p class="mt-4 text-gray-700 text-sm md:text-base italic">
+                    "Website dari Iklaninaja membuat bengkel saya terlihat
+                    profesional dan modern. Sekarang banyak pelanggan yang
+                    booking service via website, sangat efisien!"
+                  </p>
+                </div>
+                <div class="testimonial-author flex items-center mt-6">
                   <img
                     src="https://placehold.co/60x60/3a0ca3/ffffff?text=AF"
                     alt="Ahmad Fauzi"
-                    class="testimonial-author-img"
+                    class="rounded-full w-12 h-12 object-cover"
                   />
-                  <div class="author-details">
-                    <h4>Ahmad Fauzi</h4>
-                    <p>Pemilik Bengkel Motor Fauzi</p>
+                  <div class="ml-4">
+                    <h4 class="text-gray-900 font-semibold text-base">
+                      Ahmad Fauzi
+                    </h4>
+                    <p class="text-sm text-gray-500">
+                      Pemilik Bengkel Motor Fauzi
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
 
             <!-- Tambahan Testimonial 4 -->
-            <div class="testimonial-card">
-              <div class="testimonial-content">
-                <p>
-                  "Desain kemasan dari Iklaninaja membuat produk saya terlihat
-                  premium dan nilai jual meningkat 2x lipat! Penjualan saya jauh
-                  lebih baik dari sebelumnya."
-                </p>
-                <div class="testimonial-author-info">
+            <div
+              class="testimonial-card-wrapper flex-shrink-0 w-full sm:w-1/2 md:w-1/3 p-4"
+            >
+              <div
+                class="testimonial-card bg-white shadow-lg rounded-2xl p-6 transition-all hover:transform hover:scale-105 h-full flex flex-col justify-between"
+              >
+                <div class="relative">
+                  <i
+                    class="fa fa-quote-left text-accent text-3xl opacity-20 absolute -top-2 left-2"
+                  ></i>
+                  <p class="mt-4 text-gray-700 text-sm md:text-base italic">
+                    "Desain kemasan dari Iklaninaja membuat produk saya terlihat
+                    premium dan nilai jual meningkat 2x lipat! Penjualan saya
+                    jauh lebih baik dari sebelumnya."
+                  </p>
+                </div>
+                <div class="testimonial-author flex items-center mt-6">
                   <img
                     src="https://placehold.co/60x60/212529/ffffff?text=DL"
                     alt="Dewi Lestari"
-                    class="testimonial-author-img"
+                    class="rounded-full w-12 h-12 object-cover"
                   />
-                  <div class="author-details">
-                    <h4>Dewi Lestari</h4>
-                    <p>Pemilik Kue Kering Dewi</p>
+                  <div class="ml-4">
+                    <h4 class="text-gray-900 font-semibold text-base">
+                      Dewi Lestari
+                    </h4>
+                    <p class="text-sm text-gray-500">Pemilik Kue Kering Dewi</p>
                   </div>
                 </div>
               </div>
@@ -397,12 +445,19 @@
           </div>
         </div>
 
-        <div class="slider-controls">
-          <button class="slider-prev">
+        <div
+          class="slider-controls flex justify-center items-center gap-8 mt-8"
+        >
+          <button
+            id="prevBtn"
+            class="bg-gray-200 text-gray-600 hover:bg-gray-300 rounded-full w-12 h-12 transition-all"
+          >
             <i class="fas fa-chevron-left"></i>
           </button>
-          <div class="slider-dots"></div>
-          <button class="slider-next">
+          <button
+            id="nextBtn"
+            class="bg-gray-200 text-gray-600 hover:bg-gray-300 rounded-full w-12 h-12 transition-all"
+          >
             <i class="fas fa-chevron-right"></i>
           </button>
         </div>
