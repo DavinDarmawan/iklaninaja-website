@@ -1,4 +1,7 @@
-/* ===== VARIABEL & FONTS ===== */
+/* ===== FONT IMPORTS & DEFINITION ===== */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
+
+/* ===== VARIABEL ===== */
 :root {
   --primary: #4361ee;
   --secondary: #3a0ca3;
@@ -13,8 +16,6 @@
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
 
 /* ===== BASE STYLES ===== */
 * {
@@ -780,11 +781,11 @@ footer {
 
 /* Perbaikan untuk ikon media sosial */
 .social-links a {
-  font-size: 1.8rem; /* Ukuran ikon diperbesar */
+  font-size: 1.8rem;
   color: #ddd;
   transition: var(--transition);
-  padding: 0.5rem; /* Menambah padding untuk area sentuh yang lebih besar */
-  border-radius: 50%; /* Membuat area sentuh bulat */
+  padding: 0.5rem;
+  border-radius: 50%;
 }
 
 .social-links a:hover {
@@ -962,17 +963,17 @@ footer {
 
   .navbar {
     display: flex;
-    justify-content: flex-end;
     align-items: center;
-    position: relative;
-    padding-left: 1rem;
+    width: 100%;
   }
 
-  /* .logo-container {} */
+  .logo-container {
+    /* Menghapus properti order */
+  }
 
   .hamburger {
     display: flex;
-    /* Menghapus properti order */
+    margin-left: auto; /* Menggunakan margin-left: auto untuk mendorong ke kanan */
   }
 
   .nav-links {
@@ -1027,6 +1028,6 @@ footer {
   }
 
   .social-links {
-    justify-content: center; /* Memastikan ikon di tengah pada layar kecil */
+    justify-content: center;
   }
 }
