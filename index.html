@@ -4,17 +4,920 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Iklaninaja - Branding UMKM Kekinian</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- ... meta tags lainnya ... -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
+    <style>
+      /* ===== VARIABEL & FONTS ===== */
+      :root {
+        --primary: #4361ee;
+        --secondary: #3a0ca3;
+        --accent: #f72585;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --success: #4cc9f0;
+      }
+
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
+
+      /* ===== BASE STYLES ===== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        line-height: 1.6;
+        background-color: var(--light);
+        color: var(--dark);
+        overflow-x: hidden;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: "Righteous", cursive;
+        letter-spacing: 1px;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+      }
+
+      section {
+        padding: 5rem 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .highlight {
+        color: var(--accent);
+        position: relative;
+        display: inline-block;
+      }
+
+      .highlight::after {
+        content: "";
+        position: absolute;
+        bottom: 5px;
+        left: 0;
+        width: 100%;
+        height: 15px;
+        background-color: rgba(247, 37, 133, 0.2);
+        z-index: -1;
+      }
+
+      /* ===== ANIMATIONS ===== */
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .float-animation {
+        animation: float 3s ease-in-out infinite;
+      }
+
+      .pulse {
+        animation: pulse 2s infinite;
+      }
+
+      /* ===== HEADER & NAVBAR ===== */
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.5rem 0;
+        background-color: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .header.scrolled {
+        padding: 1rem 0;
+        background-color: rgba(255, 255, 255, 0.98);
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--dark);
+      }
+
+      .logo-accent {
+        color: var(--accent);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--dark);
+        font-weight: 500;
+        transition: color 0.3s;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        color: var(--accent);
+      }
+
+      .nav-links a::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--accent);
+        transition: width 0.3s;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      .cta-nav {
+        background-color: var(--accent);
+        color: white !important;
+        padding: 0.5rem 1.5rem;
+        border-radius: 50px;
+        transition: all 0.3s;
+      }
+
+      .cta-nav:hover {
+        background-color: var(--secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+      }
+
+      .cta-nav::after {
+        display: none;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .hamburger span {
+        display: block;
+        width: 25px;
+        height: 3px;
+        background-color: var(--dark);
+        transition: all 0.3s;
+      }
+
+      /* ===== HERO SECTION ===== */
+      .hero {
+        padding: 8rem 0 5rem;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero-content {
+        max-width: 600px;
+        z-index: 2;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1.5rem;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        color: #555;
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+
+      .cta-button {
+        display: inline-block;
+        background-color: var(--accent);
+        color: white;
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s;
+        box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+      }
+
+      .cta-button:hover {
+        background-color: var(--secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(247, 37, 133, 0.4);
+      }
+
+      .cta-secondary {
+        display: inline-block;
+        color: var(--dark);
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: 2px solid var(--accent);
+      }
+
+      .cta-secondary:hover {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      .hero-image {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50%;
+        max-width: 600px;
+        z-index: 1;
+      }
+
+      .shape {
+        position: absolute;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        opacity: 0.1;
+        z-index: -1;
+      }
+
+      .shape-1 {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        right: -100px;
+      }
+
+      .shape-2 {
+        width: 200px;
+        height: 200px;
+        bottom: -50px;
+        left: -50px;
+      }
+
+      /* ===== SERVICES SECTION ===== */
+      .services {
+        background-color: white;
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .service-card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .service-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        opacity: 0;
+        transition: opacity 0.3s;
+        z-index: -1;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        color: white;
+      }
+
+      .service-card:hover::before {
+        opacity: 1;
+      }
+
+      .service-card:hover .service-icon {
+        background-color: white;
+        color: var(--accent);
+      }
+
+      .service-card:hover .service-link {
+        color: white;
+      }
+
+      .service-icon {
+        width: 70px;
+        height: 70px;
+        background-color: var(--light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--primary);
+        margin-bottom: 1.5rem;
+        transition: all 0.3s;
+      }
+
+      .service-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+      }
+
+      .service-card p {
+        margin-bottom: 1.5rem;
+        color: #666;
+        transition: color 0.3s;
+      }
+
+      .service-card:hover p {
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .service-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--primary);
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .service-hover-effect {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        top: -50px;
+        right: -50px;
+        transition: all 0.5s;
+      }
+
+      .service-card:hover .service-hover-effect {
+        transform: scale(5);
+        opacity: 0;
+      }
+
+      /* ===== PORTFOLIO SECTION ===== */
+      .portfolio {
+        background-color: var(--light);
+      }
+
+      .portfolio-filter {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .filter-btn {
+        padding: 0.5rem 1.5rem;
+        background-color: white;
+        border: none;
+        border-radius: 50px;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .filter-btn.active {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      .filter-btn:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .portfolio-item {
+        position: relative;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+
+      .portfolio-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.5s;
+      }
+
+      .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          to top,
+          rgba(67, 97, 238, 0.9),
+          rgba(58, 12, 163, 0.7)
+        );
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .portfolio-item:hover .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .portfolio-overlay h3 {
+        color: white;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+        transform: translateY(20px);
+        transition: transform 0.3s;
+      }
+
+      .portfolio-overlay p {
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 1rem;
+        transform: translateY(20px);
+        transition: transform 0.3s 0.1s;
+      }
+
+      .portfolio-view {
+        color: white;
+        font-weight: 600;
+        align-self: flex-start;
+        padding-bottom: 5px;
+        border-bottom: 2px solid var(--accent);
+        transform: translateY(20px);
+        transition: transform 0.3s 0.2s;
+      }
+
+      .portfolio-item:hover .portfolio-overlay h3,
+      .portfolio-item:hover .portfolio-overlay p,
+      .portfolio-item:hover .portfolio-view {
+        transform: translateY(0);
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .mt-5 {
+        margin-top: 3rem;
+      }
+
+      /* ===== TESTIMONIALS SECTION ===== */
+      .testimonials {
+        background-color: white;
+      }
+
+      .testimonial-slider {
+        position: relative;
+        max-width: 1000px;
+        margin: 3rem auto 0;
+        overflow: hidden;
+      }
+
+      .testimonial-track {
+        display: flex;
+        transition: transform 0.5s ease;
+      }
+
+      .testimonial-card {
+        min-width: 100%;
+        padding: 0 15px;
+        box-sizing: border-box;
+      }
+
+      .testimonial-content {
+        background-color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+
+      .quote-icon {
+        position: absolute;
+        top: -15px;
+        left: -15px;
+        width: 50px;
+        height: 50px;
+        background-color: var(--accent);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .testimonial-content p {
+        font-style: italic;
+        color: #555;
+        padding-left: 2rem;
+      }
+
+      .testimonial-author {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .testimonial-author img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .author-info h4 {
+        font-family: "Poppins", sans-serif;
+        font-size: 1.1rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .author-info p {
+        color: #777;
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+      }
+
+      .rating {
+        color: var(--accent);
+        font-size: 0.9rem;
+      }
+
+      .slider-controls {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+
+      .slider-prev,
+      .slider-next {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--dark);
+        cursor: pointer;
+        transition: all 0.3s;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(67, 97, 238, 0.1);
+      }
+
+      .slider-prev:hover,
+      .slider-next:hover {
+        background-color: var(--primary);
+        color: white;
+      }
+
+      .slider-dots {
+        display: flex;
+        gap: 10px;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: #ddd;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .dot.active {
+        background-color: var(--primary);
+        transform: scale(1.2);
+      }
+
+      /* ===== FOOTER ===== */
+      footer {
+        background-color: #333;
+        color: white;
+        padding: 4rem 0 2rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .footer-section h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent);
+      }
+
+      .footer-section p {
+        margin-bottom: 1rem;
+        color: #ddd;
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: #ddd;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: white;
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background-color: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #444;
+        color: #aaa;
+        font-size: 0.9rem;
+      }
+
+      /* ===== RESPONSIVE STYLES ===== */
+      @media (max-width: 1200px) {
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .hero-image {
+          position: relative;
+          width: 100%;
+          max-width: 500px;
+          margin: 3rem auto 0;
+          transform: none;
+          top: auto;
+          right: auto;
+        }
+
+        .hero-content {
+          max-width: 100%;
+          text-align: center;
+        }
+
+        .hero-cta {
+          justify-content: center;
+        }
+
+        .testimonial-card {
+          min-width: 50%;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero {
+          padding-top: 6rem;
+        }
+
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .nav-links {
+          position: fixed;
+          top: 0;
+          right: -100%;
+          width: 70%;
+          height: 100vh;
+          background-color: white;
+          flex-direction: column;
+          justify-content: center;
+          gap: 2rem;
+          box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+          transition: right 0.5s ease;
+        }
+
+        .nav-links.active {
+          right: 0;
+        }
+
+        .hamburger.active span:nth-child(1) {
+          transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+          transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        .testimonial-card {
+          min-width: 100%;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .section-title {
+          font-size: 2rem;
+        }
+
+        .services-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .portfolio-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* ===== ANIMATION STYLES ===== */
+      .animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.5s ease;
+      }
+
+      .animate.animated {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Delay untuk animasi */
+      .services-grid .service-card:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+
+      .services-grid .service-card:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      .services-grid .service-card:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      .services-grid .service-card:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+
+      .portfolio-grid .portfolio-item:nth-child(1) {
+        transition-delay: 0.1s;
+      }
+
+      .portfolio-grid .portfolio-item:nth-child(2) {
+        transition-delay: 0.2s;
+      }
+
+      .portfolio-grid .portfolio-item:nth-child(3) {
+        transition-delay: 0.3s;
+      }
+
+      .portfolio-grid .portfolio-item:nth-child(4) {
+        transition-delay: 0.4s;
+      }
+
+      .portfolio-grid .portfolio-item:nth-child(5) {
+        transition-delay: 0.5s;
+      }
+
+      .portfolio-grid .portfolio-item:nth-child(6) {
+        transition-delay: 0.6s;
+      }
+    </style>
   </head>
   <body>
-    <!-- Konten akan ditambahkan di sini -->
-    <script src="assets/js/main.js"></script>
-
+    <!-- ===== HEADER ===== -->
     <header class="header">
       <div class="container">
         <a href="/" class="logo">Iklanin<span class="logo-accent">aja</span></a>
@@ -38,6 +941,7 @@
       </div>
     </header>
 
+    <!-- ===== HERO SECTION ===== -->
     <section class="hero" id="home">
       <div class="container">
         <div class="hero-content">
@@ -58,7 +962,7 @@
 
         <div class="hero-image">
           <img
-            src="assets/images/hero-illustration.png"
+            src="https://iklaninaja.com/assets/images/hero-illustration.png"
             alt="Branding UMKM"
             class="float-animation"
           />
@@ -68,6 +972,7 @@
       </div>
     </section>
 
+    <!-- ===== SERVICES SECTION ===== -->
     <section class="services" id="layanan">
       <div class="container">
         <div class="section-header">
@@ -146,6 +1051,7 @@
       </div>
     </section>
 
+    <!-- ===== PORTFOLIO SECTION ===== -->
     <section class="portfolio" id="portfolio">
       <div class="container">
         <div class="section-header">
@@ -167,7 +1073,10 @@
         <div class="portfolio-grid">
           <!-- Item 1 -->
           <div class="portfolio-item animate" data-category="logo">
-            <img src="assets/images/portfolio1.jpg" alt="Portfolio 1" />
+            <img
+              src="https://iklaninaja.com/assets/images/portfolio1.jpg"
+              alt="Portfolio 1"
+            />
             <div class="portfolio-overlay">
               <h3>Kedai Kopi Budi</h3>
               <p>Desain Logo</p>
@@ -177,7 +1086,10 @@
 
           <!-- Item 2 -->
           <div class="portfolio-item animate" data-category="social">
-            <img src="assets/images/portfolio2.jpg" alt="Portfolio 2" />
+            <img
+              src="https://iklaninaja.com/assets/images/portfolio2.jpg"
+              alt="Portfolio 2"
+            />
             <div class="portfolio-overlay">
               <h3>Homemade Cookies</h3>
               <p>Social Media Kit</p>
@@ -187,7 +1099,10 @@
 
           <!-- Item 3 -->
           <div class="portfolio-item animate" data-category="website">
-            <img src="assets/images/portfolio3.jpg" alt="Portfolio 3" />
+            <img
+              src="https://iklaninaja.com/assets/images/portfolio3.jpg"
+              alt="Portfolio 3"
+            />
             <div class="portfolio-overlay">
               <h3>Bengkel Motor Fauzi</h3>
               <p>Website UMKM</p>
@@ -197,7 +1112,10 @@
 
           <!-- Item 4 -->
           <div class="portfolio-item animate" data-category="logo">
-            <img src="assets/images/portfolio4.jpg" alt="Portfolio 4" />
+            <img
+              src="https://iklaninaja.com/assets/images/portfolio4.jpg"
+              alt="Portfolio 4"
+            />
             <div class="portfolio-overlay">
               <h3>Toko Baju Ani</h3>
               <p>Desain Logo</p>
@@ -207,7 +1125,10 @@
 
           <!-- Item 5 -->
           <div class="portfolio-item animate" data-category="social">
-            <img src="assets/images/portfolio5.jpg" alt="Portfolio 5" />
+            <img
+              src="https://iklaninaja.com/assets/images/portfolio5.jpg"
+              alt="Portfolio 5"
+            />
             <div class="portfolio-overlay">
               <h3>Catering Mama Lia</h3>
               <p>Social Media Kit</p>
@@ -217,7 +1138,10 @@
 
           <!-- Item 6 -->
           <div class="portfolio-item animate" data-category="website">
-            <img src="assets/images/portfolio6.jpg" alt="Portfolio 6" />
+            <img
+              src="https://iklaninaja.com/assets/images/portfolio6.jpg"
+              alt="Portfolio 6"
+            />
             <div class="portfolio-overlay">
               <h3>Klinik Kecantikan Sari</h3>
               <p>Website UMKM</p>
@@ -232,6 +1156,7 @@
       </div>
     </section>
 
+    <!-- ===== TESTIMONIALS SECTION ===== -->
     <section class="testimonials" id="testimoni">
       <div class="container">
         <div class="section-header">
@@ -244,85 +1169,126 @@
         </div>
 
         <div class="testimonial-slider">
-          <!-- Testimonial 1 -->
-          <div class="testimonial-card">
-            <div class="testimonial-content">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
+          <div class="testimonial-track">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p>
+                  Branding dari Iklaninaja bikin kedai kopi saya terlihat
+                  seperti franchise besar. Pelanggan baru selalu bertanya apakah
+                  ini cabang dari brand ternama!
+                </p>
               </div>
-              <p>
-                Branding dari Iklaninaja bikin kedai kopi saya terlihat seperti
-                franchise besar. Pelanggan baru selalu bertanya apakah ini
-                cabang dari brand ternama!
-              </p>
-            </div>
-            <div class="testimonial-author">
-              <img src="assets/images/client1.jpg" alt="Budi Santoso" />
-              <div class="author-info">
-                <h4>Budi Santoso</h4>
-                <p>Kedai Kopi Budi</p>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
+              <div class="testimonial-author">
+                <img
+                  src="https://iklaninaja.com/assets/images/client1.jpg"
+                  alt="Budi Santoso"
+                />
+                <div class="author-info">
+                  <h4>Budi Santoso</h4>
+                  <p>Kedai Kopi Budi</p>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Testimonial 2 -->
-          <div class="testimonial-card">
-            <div class="testimonial-content">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
+            <!-- Testimonial 2 -->
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p>
+                  Social media kit mereka sangat membantu. Sekarang produk saya
+                  terlihat premium di Instagram dan penjualan meningkat 40%
+                  dalam sebulan!
+                </p>
               </div>
-              <p>
-                Social media kit mereka sangat membantu. Sekarang produk saya
-                terlihat premium di Instagram dan penjualan meningkat 40% dalam
-                sebulan!
-              </p>
-            </div>
-            <div class="testimonial-author">
-              <img src="assets/images/client2.jpg" alt="Siti Aminah" />
-              <div class="author-info">
-                <h4>Siti Aminah</h4>
-                <p>Homemade Cookies</p>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star-half-alt"></i>
+              <div class="testimonial-author">
+                <img
+                  src="https://iklaninaja.com/assets/images/client2.jpg"
+                  alt="Siti Aminah"
+                />
+                <div class="author-info">
+                  <h4>Siti Aminah</h4>
+                  <p>Homemade Cookies</p>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Testimonial 3 -->
-          <div class="testimonial-card">
-            <div class="testimonial-content">
-              <div class="quote-icon">
-                <i class="fas fa-quote-left"></i>
+            <!-- Testimonial 3 -->
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p>
+                  Website dari Iklaninaja membuat bengkel saya terlihat
+                  profesional. Sekarang banyak pelanggan yang booking service
+                  via website!
+                </p>
               </div>
-              <p>
-                Website dari Iklaninaja membuat bengkel saya terlihat
-                profesional. Sekarang banyak pelanggan yang booking service via
-                website!
-              </p>
+              <div class="testimonial-author">
+                <img
+                  src="https://iklaninaja.com/assets/images/client3.jpg"
+                  alt="Ahmad Fauzi"
+                />
+                <div class="author-info">
+                  <h4>Ahmad Fauzi</h4>
+                  <p>Bengkel Motor Fauzi</p>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="testimonial-author">
-              <img src="assets/images/client3.jpg" alt="Ahmad Fauzi" />
-              <div class="author-info">
-                <h4>Ahmad Fauzi</h4>
-                <p>Bengkel Motor Fauzi</p>
-                <div class="rating">
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
-                  <i class="fas fa-star"></i>
+
+            <!-- Testimonial 4 -->
+            <div class="testimonial-card">
+              <div class="testimonial-content">
+                <div class="quote-icon">
+                  <i class="fas fa-quote-left"></i>
+                </div>
+                <p>
+                  Desain kemasan dari Iklaninaja membuat produk saya terlihat
+                  premium dan nilai jual meningkat 2x lipat!
+                </p>
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="https://iklaninaja.com/assets/images/client4.jpg"
+                  alt="Dewi Lestari"
+                />
+                <div class="author-info">
+                  <h4>Dewi Lestari</h4>
+                  <p>Kue Kering Dewi</p>
+                  <div class="rating">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                  </div>
                 </div>
               </div>
             </div>
@@ -341,36 +1307,488 @@
       </div>
     </section>
 
-    <section class="testimonials" id="testimoni">
+    <!-- ===== BLOG SECTION ===== -->
+    <section class="blog" id="blog">
       <div class="container">
         <div class="section-header">
           <h2 class="section-title">
-            Apa Kata <span class="highlight">Klien</span> Kami?
+            Tips <span class="highlight">Branding</span>
           </h2>
           <p class="section-subtitle">
-            Dengar langsung dari pelaku UMKM yang sudah menggunakan jasa kami
+            Artikel terbaru seputar branding dan digital marketing untuk UMKM
           </p>
         </div>
 
-        <div class="testimonial-slider">
-          <div class="testimonial-track">
-            <!-- Testimonial cards akan diisi di sini -->
-            <!-- Isi testimonial card sama seperti sebelumnya -->
+        <div class="blog-grid">
+          <!-- Artikel 1 -->
+          <div class="blog-card animate">
+            <div class="blog-image">
+              <img
+                src="https://iklaninaja.com/assets/images/blog1.jpg"
+                alt="Blog 1"
+              />
+              <div class="blog-date">
+                <span>15</span>
+                <span>Jun</span>
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>5 Kesalahan Branding yang Sering Dilakukan UMKM</h3>
+              <p>
+                Banyak pelaku UMKM tidak menyadari kesalahan branding dasar yang
+                justru menghambat perkembangan bisnis mereka...
+              </p>
+              <a href="#" class="blog-link"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Artikel 2 -->
+          <div class="blog-card animate">
+            <div class="blog-image">
+              <img
+                src="https://iklaninaja.com/assets/images/blog2.jpg"
+                alt="Blog 2"
+              />
+              <div class="blog-date">
+                <span>28</span>
+                <span>Mei</span>
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>Cara Membuat Konten Instagram yang Menjual untuk UMKM</h3>
+              <p>
+                Anda tidak perlu menjadi fotografer profesional untuk membuat
+                konten Instagram yang menarik pelanggan...
+              </p>
+              <a href="#" class="blog-link"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
+          </div>
+
+          <!-- Artikel 3 -->
+          <div class="blog-card animate">
+            <div class="blog-image">
+              <img
+                src="https://iklaninaja.com/assets/images/blog3.jpg"
+                alt="Blog 3"
+              />
+              <div class="blog-date">
+                <span>10</span>
+                <span>Mei</span>
+              </div>
+            </div>
+            <div class="blog-content">
+              <h3>Berapa Sebenarnya Budget Ideal untuk Branding UMKM?</h3>
+              <p>
+                Banyak yang mengira branding itu mahal. Kami bocorkan breakdown
+                biaya branding sesuai skala usaha Anda...
+              </p>
+              <a href="#" class="blog-link"
+                >Baca Selengkapnya <i class="fas fa-arrow-right"></i
+              ></a>
+            </div>
           </div>
         </div>
 
-        <div class="slider-controls">
-          <button class="slider-prev">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <div class="slider-dots">
-            <!-- Dots akan di-generate oleh JavaScript -->
-          </div>
-          <button class="slider-next">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+        <div class="text-center mt-5">
+          <a href="#" class="cta-button">Lihat Semua Artikel</a>
         </div>
       </div>
     </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="contact" id="kontak">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">
+            Hubungi <span class="highlight">Kami</span>
+          </h2>
+          <p class="section-subtitle">
+            Punya pertanyaan atau ingin konsultasi gratis tentang branding untuk
+            UMKM Anda?
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Informasi Kontak</h3>
+            <ul>
+              <li>
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Jl. UMKM No. 123, Jakarta Selatan</span>
+              </li>
+              <li>
+                <i class="fas fa-phone-alt"></i>
+                <span>0812-3456-7890</span>
+              </li>
+              <li>
+                <i class="fas fa-envelope"></i>
+                <span>halo@iklaninaja.id</span>
+              </li>
+              <li>
+                <i class="fas fa-clock"></i>
+                <span>Senin-Jumat: 09.00 - 17.00 WIB</span>
+              </li>
+            </ul>
+
+            <div class="social-media">
+              <h3>Media Sosial</h3>
+              <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form id="contactForm">
+              <div class="form-group">
+                <input type="text" placeholder="Nama Anda" required />
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="Email Anda" required />
+              </div>
+              <div class="form-group">
+                <input type="tel" placeholder="Nomor WhatsApp" />
+              </div>
+              <div class="form-group">
+                <textarea placeholder="Pesan Anda" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="cta-button">Kirim Pesan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Iklaninaja</h3>
+            <p>
+              Solusi branding profesional untuk UMKM Indonesia. Membantu bisnis
+              kecil tampil besar dengan identitas visual yang kuat.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-whatsapp"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-section">
+            <h3>Link Cepat</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#layanan">Layanan</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#testimoni">Testimoni</a></li>
+              <li><a href="#blog">Blog</a></li>
+              <li><a href="#kontak">Kontak</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Layanan Kami</h3>
+            <ul class="footer-links">
+              <li><a href="#">Desain Logo</a></li>
+              <li><a href="#">Social Media Kit</a></li>
+              <li><a href="#">Website UMKM</a></li>
+              <li><a href="#">Digital Marketing</a></li>
+              <li><a href="#">Desain Kemasan</a></li>
+              <li><a href="#">Brand Identity</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h3>Newsletter</h3>
+            <p>Dapatkan tips branding gratis langsung ke email Anda</p>
+            <form class="newsletter-form">
+              <input type="email" placeholder="Email Anda" required />
+              <button type="submit"><i class="fas fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+
+        <div class="copyright">
+          <p>&copy; 2023 Iklaninaja. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+      // Navbar Scroll Effect
+      window.addEventListener("scroll", function () {
+        const header = document.querySelector(".header");
+        if (window.scrollY > 50) {
+          header.classList.add("scrolled");
+        } else {
+          header.classList.remove("scrolled");
+        }
+      });
+
+      // Mobile Menu Toggle
+      const hamburger = document.querySelector(".hamburger");
+      const navLinks = document.querySelector(".nav-links");
+
+      hamburger.addEventListener("click", function () {
+        this.classList.toggle("active");
+        navLinks.classList.toggle("active");
+
+        // Toggle body scroll
+        if (navLinks.classList.contains("active")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", function () {
+          if (navLinks.classList.contains("active")) {
+            hamburger.classList.remove("active");
+            navLinks.classList.remove("active");
+            document.body.style.overflow = "auto";
+          }
+        });
+      });
+
+      // Smooth scrolling for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+
+          const targetId = this.getAttribute("href");
+          if (targetId === "#") return;
+
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            window.scrollTo({
+              top: targetElement.offsetTop - 80,
+              behavior: "smooth",
+            });
+          }
+        });
+      });
+
+      // Animation on scroll
+      function animateOnScroll() {
+        const elements = document.querySelectorAll(".animate");
+
+        elements.forEach((element) => {
+          const elementPosition = element.getBoundingClientRect().top;
+          const screenPosition = window.innerHeight / 1.3;
+
+          if (elementPosition < screenPosition) {
+            element.classList.add("animated");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", animateOnScroll);
+      window.addEventListener("load", animateOnScroll);
+
+      // Portfolio Filter
+      const filterButtons = document.querySelectorAll(".filter-btn");
+      const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", function () {
+          // Remove active class from all buttons
+          filterButtons.forEach((btn) => btn.classList.remove("active"));
+
+          // Add active class to clicked button
+          this.classList.add("active");
+
+          const filterValue = this.getAttribute("data-filter");
+
+          portfolioItems.forEach((item) => {
+            if (
+              filterValue === "all" ||
+              item.getAttribute("data-category") === filterValue
+            ) {
+              item.style.display = "block";
+            } else {
+              item.style.display = "none";
+            }
+          });
+        });
+      });
+
+      // Testimonial Slider
+      document.addEventListener("DOMContentLoaded", function () {
+        const track = document.querySelector(".testimonial-track");
+        const cards = document.querySelectorAll(".testimonial-card");
+        const prevBtn = document.querySelector(".slider-prev");
+        const nextBtn = document.querySelector(".slider-next");
+        const dotsContainer = document.querySelector(".slider-dots");
+
+        let currentIndex = 0;
+        const cardCount = cards.length;
+
+        // Create dots
+        cards.forEach((_, index) => {
+          const dot = document.createElement("div");
+          dot.classList.add("dot");
+          if (index === 0) dot.classList.add("active");
+          dot.addEventListener("click", () => {
+            goToSlide(index);
+          });
+          dotsContainer.appendChild(dot);
+        });
+
+        const dots = document.querySelectorAll(".dot");
+
+        // Clone first and last cards for infinite loop
+        const firstClone = cards[0].cloneNode(true);
+        const lastClone = cards[cardCount - 1].cloneNode(true);
+
+        firstClone.id = "first-clone";
+        lastClone.id = "last-clone";
+
+        track.appendChild(firstClone);
+        track.insertBefore(lastClone, cards[0]);
+
+        // Set initial position
+        track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
+
+        // Handle transitions
+        track.addEventListener("transitionend", () => {
+          if (cards[currentIndex].id === "first-clone") {
+            track.style.transition = "none";
+            currentIndex = 0;
+            track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
+            setTimeout(() => {
+              track.style.transition = "transform 0.5s ease";
+            });
+          }
+
+          if (cards[currentIndex].id === "last-clone") {
+            track.style.transition = "none";
+            currentIndex = cardCount - 1;
+            track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
+            setTimeout(() => {
+              track.style.transition = "transform 0.5s ease";
+            });
+          }
+
+          updateDots();
+        });
+
+        // Next slide
+        nextBtn.addEventListener("click", () => {
+          if (currentIndex >= cardCount - 1) return;
+          currentIndex++;
+          track.style.transition = "transform 0.5s ease";
+          track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
+        });
+
+        // Previous slide
+        prevBtn.addEventListener("click", () => {
+          if (currentIndex <= 0) return;
+          currentIndex--;
+          track.style.transition = "transform 0.5s ease";
+          track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
+        });
+
+        // Go to specific slide
+        function goToSlide(index) {
+          currentIndex = index;
+          track.style.transition = "transform 0.5s ease";
+          track.style.transform = `translateX(-${100 * (currentIndex + 1)}%)`;
+          updateDots();
+        }
+
+        // Update dot indicators
+        function updateDots() {
+          dots.forEach((dot, index) => {
+            dot.classList.remove("active");
+            if (index === currentIndex) {
+              dot.classList.add("active");
+            }
+          });
+        }
+
+        // Auto slide
+        let autoSlide = setInterval(() => {
+          nextBtn.click();
+        }, 5000);
+
+        // Pause on hover
+        const slider = document.querySelector(".testimonials");
+        slider.addEventListener("mouseenter", () => {
+          clearInterval(autoSlide);
+        });
+
+        slider.addEventListener("mouseleave", () => {
+          autoSlide = setInterval(() => {
+            nextBtn.click();
+          }, 5000);
+        });
+
+        // Touch support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener(
+          "touchstart",
+          (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+          },
+          { passive: true }
+        );
+
+        track.addEventListener(
+          "touchend",
+          (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+          },
+          { passive: true }
+        );
+
+        function handleSwipe() {
+          if (touchEndX < touchStartX - 50) {
+            nextBtn.click();
+          }
+
+          if (touchEndX > touchStartX + 50) {
+            prevBtn.click();
+          }
+        }
+      });
+
+      // Contact Form Submission
+      const contactForm = document.getElementById("contactForm");
+      if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          // Get form values
+          const name = this.querySelector('input[type="text"]').value;
+          const email = this.querySelector('input[type="email"]').value;
+
+          // Simple validation
+          if (name && email) {
+            alert(
+              `Terima kasih ${name}! Pesan Anda telah terkirim. Kami akan menghubungi Anda melalui email ${email} dalam 1x24 jam.`
+            );
+            this.reset();
+          } else {
+            alert("Harap isi nama dan email Anda!");
+          }
+        });
+      }
+    </script>
   </body>
 </html>
