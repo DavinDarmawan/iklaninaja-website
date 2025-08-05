@@ -1,7 +1,4 @@
-/* ===== FONT IMPORTS & DEFINITION ===== */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
-
-/* ===== VARIABEL ===== */
+/* ===== VARIABEL & FONTS ===== */
 :root {
   --primary: #4361ee;
   --secondary: #3a0ca3;
@@ -16,6 +13,8 @@
   --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
   --transition: all 0.3s ease;
 }
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Righteous&display=swap");
 
 /* ===== BASE STYLES ===== */
 * {
@@ -637,7 +636,6 @@ section {
   padding: 2rem;
   position: relative;
   margin-bottom: 1.5rem;
-  /* Disesuaikan untuk mencegah teks terpotong */
   min-height: 200px;
   display: flex;
   flex-direction: column;
@@ -647,12 +645,9 @@ section {
 .testimonial-content p {
   font-style: italic;
   color: var(--text);
-  /* Tambahkan padding di samping untuk memastikan teks tidak terlalu lebar */
   padding: 0 2rem;
   margin-bottom: 0;
-  /* Menggunakan flex-grow untuk mengisi ruang yang tersedia */
   flex-grow: 1;
-  /* Tambahkan properti ini untuk mengatur wrapping dan menghindari pemotongan */
   white-space: normal;
   overflow-wrap: break-word;
 }
@@ -936,18 +931,23 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .hero {
-    padding-top: 6rem;
-  }
-
-  .hero h1 {
-    font-size: 2.5rem;
-  }
-
-  .hero-cta {
-    flex-direction: column;
+  .header .container {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 1.5rem;
   }
+
+  /* Mengatur ulang flexbox untuk navbar pada tampilan mobile */
+  .navbar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: relative;
+    padding-left: 1rem; /* Menambahkan padding agar tidak terlalu mepet ke kiri */
+  }
+
+  /* .logo-container {} */
 
   .hamburger {
     display: flex;
