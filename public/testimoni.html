@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Testimoni - IklaninAja</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom colors for Tailwind */
+      :root {
+        --color-primary-blue: #007bff; /* Electric Blue */
+        --color-accent-neon: #00ffff; /* Neon */
+        --color-dark-bg: #1a202c; /* Dark background for futuristic feel */
+      }
+      .bg-primary-blue {
+        background-color: var(--color-primary-blue);
+      }
+      .text-primary-blue {
+        color: var(--color-primary-blue);
+      }
+      .border-primary-blue {
+        border-color: var(--color-primary-blue);
+      }
+      .bg-accent-neon {
+        background-color: var(--color-accent-neon);
+      }
+      .text-accent-neon {
+        color: var(--color-accent-neon);
+      }
+      .bg-dark-bg {
+        background-color: var(--color-dark-bg);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        color: #333;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .btn-neon {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 0.4s ease-in-out;
+      }
+      .btn-neon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-accent-neon),
+          transparent
+        );
+        transition: left 0.4s ease-in-out;
+        z-index: -1;
+      }
+      .btn-neon:hover::before {
+        left: 100%;
+      }
+      .btn-neon:hover {
+        color: var(--color-dark-bg);
+      }
+      .floating-cta {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 50;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .hamburger-line {
+        width: 24px;
+        height: 3px;
+        background-color: #333;
+        margin: 4px 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .hamburger-active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section (Copy from index.html for consistency) -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10 sticky top-0 z-40">
+      <nav class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-extrabold text-primary-blue"
+          >IklaninAja</a
+        >
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="tentang-kami.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a
+              href="portofolio.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a href="testimoni.html" class="text-primary-blue font-semibold"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a
+              href="kontak.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="hamburger-button" class="md:hidden focus:outline-none">
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+        </button>
+      </nav>
+
+      <!-- Mobile Navigation Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4">
+        <ul class="flex flex-col space-y-4 px-4">
+          <li>
+            <a
+              href="index.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="tentang-kami.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a
+              href="portofolio.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="testimoni.html"
+              class="block text-primary-blue font-semibold py-2"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a
+              href="kontak.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-20 md:py-32 bg-dark-bg text-white text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+          Testimoni Klien
+        </h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6">
+          Dengarkan langsung dari klien-klien kami yang telah merasakan dampak
+          positif dari layanan IklaninAja.
+        </p>
+      </section>
+
+      <section class="py-16 md:py-24 bg-primary-blue text-white">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold mb-12">
+            Kisah Sukses Mereka
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg text-gray-800">
+              <p class="text-lg italic mb-4">
+                "IklaninAja benar-benar mengubah cara kami beriklan. Hasilnya
+                luar biasa dan timnya sangat responsif! Penjualan kami meningkat
+                40% dalam 3 bulan."
+              </p>
+              <p class="font-semibold text-primary-blue">
+                - Budi Santoso, Pemilik Kedai Kopi "Kopi Senja"
+              </p>
+              <div class="flex justify-center mt-4">
+                <span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span>
+              </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg text-gray-800">
+              <p class="text-lg italic mb-4">
+                "Desain yang profesional dan strategi yang tepat sasaran. Bisnis
+                online kami tumbuh pesat sejak bekerja sama dengan IklaninAja.
+                Traffic website naik signifikan!"
+              </p>
+              <p class="font-semibold text-primary-blue">
+                - Siti Aminah, Owner Fashion Butik "Gaya Kita"
+              </p>
+              <div class="flex justify-center mt-4">
+                <span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span>
+              </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg text-gray-800">
+              <p class="text-lg italic mb-4">
+                "Sangat puas dengan layanan IklaninAja. Mereka membantu kami
+                mencapai target penjualan yang sebelumnya sulit diraih, bahkan
+                di luar ekspektasi."
+              </p>
+              <p class="font-semibold text-primary-blue">
+                - Joko Susilo, Direktur PT. Maju Bersama
+              </p>
+              <div class="flex justify-center mt-4">
+                <span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span>
+              </div>
+            </div>
+            <!-- Testimonial 4 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg text-gray-800">
+              <p class="text-lg italic mb-4">
+                "Tim IklaninAja sangat profesional dan responsif. Mereka
+                mendengarkan kebutuhan kami dan memberikan solusi yang
+                benar-benar efektif. Sangat direkomendasikan!"
+              </p>
+              <p class="font-semibold text-primary-blue">
+                - Maria Chandra, Pemilik Restoran "Rasa Nusantara"
+              </p>
+              <div class="flex justify-center mt-4">
+                <span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span>
+              </div>
+            </div>
+            <!-- Testimonial 5 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg text-gray-800">
+              <p class="text-lg italic mb-4">
+                "Kami terkesan dengan hasil kampanye Google Ads yang dikelola
+                IklaninAja. ROI kami meningkat drastis dan leads yang masuk
+                sangat berkualitas."
+              </p>
+              <p class="font-semibold text-primary-blue">
+                - David Wijaya, Manajer Pemasaran Properti "Green Living"
+              </p>
+              <div class="flex justify-center mt-4">
+                <span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span>
+              </div>
+            </div>
+            <!-- Testimonial 6 -->
+            <div class="bg-white p-8 rounded-xl shadow-lg text-gray-800">
+              <p class="text-lg italic mb-4">
+                "Sejak bekerja sama dengan IklaninAja, brand awareness kami
+                meroket. Desain konten mereka sangat kreatif dan menarik
+                perhatian."
+              </p>
+              <p class="font-semibold text-primary-blue">
+                - Ayu Lestari, Pendiri Startup "EduTech"
+              </p>
+              <div class="flex justify-center mt-4">
+                <span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span
+                ><span class="text-yellow-400">⭐</span>
+              </div>
+            </div>
+          </div>
+          <a
+            href="kontak.html"
+            class="mt-12 inline-block bg-dark-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition duration-300 transform hover:scale-105 btn-neon"
+          >
+            Mari Buat Kisah Sukses Anda
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating CTA Button -->
+    <a
+      href="kontak.html"
+      class="floating-cta bg-primary-blue text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 btn-neon"
+    >
+      Order Sekarang
+    </a>
+
+    <!-- Footer Section (Copy from index.html for consistency) -->
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-10">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 IklaninAja. Semua Hak Dilindungi.</p>
+        <div class="mt-4 space-x-4">
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Kebijakan Privasi</a
+          >
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Syarat & Ketentuan</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

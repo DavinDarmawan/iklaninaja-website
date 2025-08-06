@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio - IklaninAja</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom colors for Tailwind */
+      :root {
+        --color-primary-blue: #007bff; /* Electric Blue */
+        --color-accent-neon: #00ffff; /* Neon */
+        --color-dark-bg: #1a202c; /* Dark background for futuristic feel */
+      }
+      .bg-primary-blue {
+        background-color: var(--color-primary-blue);
+      }
+      .text-primary-blue {
+        color: var(--color-primary-blue);
+      }
+      .border-primary-blue {
+        border-color: var(--color-primary-blue);
+      }
+      .bg-accent-neon {
+        background-color: var(--color-accent-neon);
+      }
+      .text-accent-neon {
+        color: var(--color-accent-neon);
+      }
+      .bg-dark-bg {
+        background-color: var(--color-dark-bg);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        color: #333;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .btn-neon {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 0.4s ease-in-out;
+      }
+      .btn-neon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-accent-neon),
+          transparent
+        );
+        transition: left 0.4s ease-in-out;
+        z-index: -1;
+      }
+      .btn-neon:hover::before {
+        left: 100%;
+      }
+      .btn-neon:hover {
+        color: var(--color-dark-bg);
+      }
+      .floating-cta {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 50;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .hamburger-line {
+        width: 24px;
+        height: 3px;
+        background-color: #333;
+        margin: 4px 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .hamburger-active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section (Copy from index.html for consistency) -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10 sticky top-0 z-40">
+      <nav class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-extrabold text-primary-blue"
+          >IklaninAja</a
+        >
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="tentang-kami.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a href="portofolio.html" class="text-primary-blue font-semibold"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="testimoni.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a
+              href="kontak.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="hamburger-button" class="md:hidden focus:outline-none">
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+        </button>
+      </nav>
+
+      <!-- Mobile Navigation Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4">
+        <ul class="flex flex-col space-y-4 px-4">
+          <li>
+            <a
+              href="index.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="tentang-kami.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a
+              href="portofolio.html"
+              class="block text-primary-blue font-semibold py-2"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="testimoni.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a
+              href="kontak.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-20 md:py-32 bg-dark-bg text-white text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+          Portofolio Kami
+        </h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6">
+          Lihatlah studi kasus dan hasil nyata dari kampanye digital yang telah
+          kami sukseskan.
+        </p>
+      </section>
+
+      <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+            Proyek Pilihan Kami
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Portfolio Item 1 -->
+            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+              <img
+                src="https://placehold.co/600x400/007BFF/FFFFFF?text=Campaign+Result+1"
+                alt="Campaign Result 1"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                  Peningkatan Penjualan Brand X
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Strategi Instagram Ads yang inovatif menghasilkan peningkatan
+                  penjualan 30% dalam 2 bulan untuk toko fashion online.
+                </p>
+                <a
+                  href="#"
+                  class="inline-block text-primary-blue hover:underline mt-3 text-sm"
+                  >Lihat Detail Proyek &rarr;</a
+                >
+              </div>
+            </div>
+            <!-- Portfolio Item 2 -->
+            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+              <img
+                src="https://placehold.co/600x400/00FFFF/1A202C?text=Campaign+Result+2"
+                alt="Campaign Result 2"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                  Optimasi SEO E-commerce Y
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Meningkatkan traffic organik sebesar 50% dan mencapai
+                  peringkat halaman pertama di Google untuk kata kunci utama.
+                </p>
+                <a
+                  href="#"
+                  class="inline-block text-primary-blue hover:underline mt-3 text-sm"
+                  >Lihat Detail Proyek &rarr;</a
+                >
+              </div>
+            </div>
+            <!-- Portfolio Item 3 -->
+            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+              <img
+                src="https://placehold.co/600x400/1A202C/00FFFF?text=Campaign+Result+3"
+                alt="Campaign Result 3"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                  Kampanye Viral TikTok Z
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Menciptakan kampanye TikTok yang viral dengan lebih dari 1
+                  juta views dan ribuan UGC untuk produk minuman.
+                </p>
+                <a
+                  href="#"
+                  class="inline-block text-primary-blue hover:underline mt-3 text-sm"
+                  >Lihat Detail Proyek &rarr;</a
+                >
+              </div>
+            </div>
+            <!-- Portfolio Item 4 -->
+            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+              <img
+                src="https://placehold.co/600x400/FF007B/FFFFFF?text=Campaign+Result+4"
+                alt="Campaign Result 4"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                  Rebranding & Konten Brand A
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Membangun identitas brand baru dan strategi konten yang
+                  konsisten untuk meningkatkan engagement.
+                </p>
+                <a
+                  href="#"
+                  class="inline-block text-primary-blue hover:underline mt-3 text-sm"
+                  >Lihat Detail Proyek &rarr;</a
+                >
+              </div>
+            </div>
+            <!-- Portfolio Item 5 -->
+            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+              <img
+                src="https://placehold.co/600x400/7B00FF/FFFFFF?text=Campaign+Result+5"
+                alt="Campaign Result 5"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                  Manajemen Komunitas Brand B
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Membangun komunitas online yang aktif dan loyal di berbagai
+                  platform media sosial.
+                </p>
+                <a
+                  href="#"
+                  class="inline-block text-primary-blue hover:underline mt-3 text-sm"
+                  >Lihat Detail Proyek &rarr;</a
+                >
+              </div>
+            </div>
+            <!-- Portfolio Item 6 -->
+            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+              <img
+                src="https://placehold.co/600x400/00FF7B/1A202C?text=Campaign+Result+6"
+                alt="Campaign Result 6"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+              />
+              <div class="p-6">
+                <h3 class="text-xl font-semibold mb-2 text-gray-800">
+                  Strategi Pemasaran Email C
+                </h3>
+                <p class="text-gray-600 text-sm">
+                  Meningkatkan tingkat buka email dan konversi melalui kampanye
+                  email marketing yang personal.
+                </p>
+                <a
+                  href="#"
+                  class="inline-block text-primary-blue hover:underline mt-3 text-sm"
+                  >Lihat Detail Proyek &rarr;</a
+                >
+              </div>
+            </div>
+          </div>
+          <a
+            href="kontak.html"
+            class="mt-12 inline-block bg-dark-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition duration-300 transform hover:scale-105 btn-neon"
+          >
+            Mulai Proyek Anda Bersama Kami
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating CTA Button -->
+    <a
+      href="kontak.html"
+      class="floating-cta bg-primary-blue text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 btn-neon"
+    >
+      Order Sekarang
+    </a>
+
+    <!-- Footer Section (Copy from index.html for consistency) -->
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-10">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 IklaninAja. Semua Hak Dilindungi.</p>
+        <div class="mt-4 space-x-4">
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Kebijakan Privasi</a
+          >
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Syarat & Ketentuan</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

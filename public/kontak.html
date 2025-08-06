@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontak Kami - IklaninAja</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome CDN for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      /* Custom colors for Tailwind */
+      :root {
+        --color-primary-blue: #007bff; /* Electric Blue */
+        --color-accent-neon: #00ffff; /* Neon */
+        --color-dark-bg: #1a202c; /* Dark background for futuristic feel */
+      }
+      .bg-primary-blue {
+        background-color: var(--color-primary-blue);
+      }
+      .text-primary-blue {
+        color: var(--color-primary-blue);
+      }
+      .border-primary-blue {
+        border-color: var(--color-primary-blue);
+      }
+      .bg-accent-neon {
+        background-color: var(--color-accent-neon);
+      }
+      .text-accent-neon {
+        color: var(--color-accent-neon);
+      }
+      .bg-dark-bg {
+        background-color: var(--color-dark-bg);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        color: #333;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .btn-neon {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 0.4s ease-in-out;
+      }
+      .btn-neon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-accent-neon),
+          transparent
+        );
+        transition: left 0.4s ease-in-out;
+        z-index: -1;
+      }
+      .btn-neon:hover::before {
+        left: 100%;
+      }
+      .btn-neon:hover {
+        color: var(--color-dark-bg);
+      }
+      .floating-cta {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 50;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .hamburger-line {
+        width: 24px;
+        height: 3px;
+        background-color: #333;
+        margin: 4px 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .hamburger-active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Custom alignment for contact info */
+      .contact-item {
+        display: flex;
+        align-items: flex-start; /* Align icon and text at the top */
+        text-align: left; /* Ensure text aligns left */
+        justify-content: center; /* Center items horizontally on small screens */
+      }
+      @media (min-width: 768px) {
+        /* md breakpoint */
+        .contact-item {
+          justify-content: flex-start; /* Align to start on larger screens */
+        }
+      }
+      .contact-item .icon {
+        flex-shrink: 0; /* Prevent icon from shrinking */
+        margin-right: 0.75rem; /* Space between icon and text */
+        padding-top: 0.2rem; /* Adjust icon vertical alignment */
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section (Copy from index.html for consistency) -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10 sticky top-0 z-40">
+      <nav class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-extrabold text-primary-blue"
+          >IklaninAja</a
+        >
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="tentang-kami.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a
+              href="portofolio.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="testimoni.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a href="kontak.html" class="text-primary-blue font-semibold"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="hamburger-button" class="md:hidden focus:outline-none">
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+        </button>
+      </nav>
+
+      <!-- Mobile Navigation Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4">
+        <ul class="flex flex-col space-y-4 px-4">
+          <li>
+            <a
+              href="index.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="tentang-kami.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a
+              href="portofolio.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="testimoni.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a
+              href="kontak.html"
+              class="block text-primary-blue font-semibold py-2"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-20 md:py-32 bg-dark-bg text-white text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+          Hubungi Kami
+        </h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6">
+          Kami siap membantu Anda. Jangan ragu untuk menghubungi kami untuk
+          konsultasi gratis atau pertanyaan lainnya.
+        </p>
+      </section>
+
+      <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+          <!-- Contact Information (now full width) -->
+          <div class="max-w-3xl mx-auto">
+            <!-- Added max-width and mx-auto for centering -->
+            <h2
+              class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-8"
+            >
+              Informasi Kontak
+            </h2>
+            <div class="space-y-6 text-lg text-gray-700">
+              <p class="contact-item">
+                <span class="icon text-primary-blue text-2xl"
+                  ><i class="fas fa-map-marker-alt"></i
+                ></span>
+                <strong>Alamat:</strong> Jl. Cipamokolan Jl. Rancacili Blok B24,
+                Cipamokolan, Kec. Rancasari, Kota Bandung, Jawa Barat 40292
+              </p>
+              <p class="contact-item">
+                <span class="icon text-primary-blue text-2xl"
+                  ><i class="fas fa-envelope"></i
+                ></span>
+                <strong>Email:</strong>
+                <a
+                  href="mailto:iklaninaja@gmail.com"
+                  class="text-primary-blue hover:underline"
+                  >iklaninaja@gmail.com</a
+                >
+              </p>
+              <p class="contact-item">
+                <span class="icon text-primary-blue text-2xl"
+                  ><i class="fas fa-phone-alt"></i
+                ></span>
+                <strong>Telepon:</strong>
+                <a
+                  href="tel:+6281224215656"
+                  class="text-primary-blue hover:underline"
+                  >+62 812-2421-5656</a
+                >
+              </p>
+              <p class="contact-item">
+                <span class="icon text-primary-blue text-2xl"
+                  ><i class="fas fa-clock"></i
+                ></span>
+                <strong>Jam Kerja:</strong> Senin - Jumat, 09:00 - 17:00 WIB
+              </p>
+              <p class="contact-item">
+                <span class="icon text-primary-blue text-2xl"
+                  ><i class="fab fa-instagram"></i
+                ></span>
+                <strong>Instagram:</strong>
+                <a
+                  href="https://www.instagram.com/iklanin.aja"
+                  target="_blank"
+                  class="text-primary-blue hover:underline"
+                  >@iklanin.aja</a
+                >
+              </p>
+              <p class="contact-item">
+                <span class="icon text-primary-blue text-2xl"
+                  ><i class="fab fa-facebook-f"></i
+                ></span>
+                <strong>Facebook:</strong>
+                <a
+                  href="https://www.facebook.com/iklanin.aja"
+                  target="_blank"
+                  class="text-primary-blue hover:underline"
+                  >iklanin.aja</a
+                >
+              </p>
+            </div>
+            <div class="mt-10 text-center">
+              <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                Chat Langsung
+              </h3>
+              <div class="flex space-x-4 justify-center flex-wrap gap-4">
+                <a
+                  href="https://wa.me/+6281224215656"
+                  target="_blank"
+                  class="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition duration-300 transform hover:scale-105"
+                >
+                  <span class="mr-2">💬</span> WhatsApp
+                </a>
+                <a
+                  href="https://t.me/YOUR_TELEGRAM_USERNAME"
+                  target="_blank"
+                  class="inline-flex items-center bg-blue-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-600 transition duration-300 transform hover:scale-105"
+                >
+                  <span class="mr-2">✈️</span> Telegram
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Removed Contact Form -->
+        </div>
+      </section>
+
+      <!-- Google Maps Section -->
+      <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6 text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
+            Temukan Kami di Peta
+          </h2>
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden h-96">
+            <!-- Google Maps iframe with updated src -->
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.916972041285!2d107.6763618!3d-6.9506705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c32dc2b99151%3A0x3e8b8cf2b6b51134!2sKopilahdulu+Coffee!5e0!3m2!1sen!2sid!4v1678901234567!5m2!1sen!2sid"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Lokasi IklaninAja di Peta"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating CTA Button -->
+    <a
+      href="kontak.html"
+      class="floating-cta bg-primary-blue text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 btn-neon"
+    >
+      Order Sekarang
+    </a>
+
+    <!-- Footer Section (Copy from index.html for consistency) -->
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-10">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 IklaninAja. Semua Hak Dilindungi.</p>
+        <div class="mt-4 space-x-4">
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Kebijakan Privasi</a
+          >
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Syarat & Ketentuan</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="js/main.js"></script>
+  </body>
+</html>

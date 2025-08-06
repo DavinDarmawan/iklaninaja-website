@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Kami - IklaninAja</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Custom colors for Tailwind */
+      :root {
+        --color-primary-blue: #007bff; /* Electric Blue */
+        --color-accent-neon: #00ffff; /* Neon */
+        --color-dark-bg: #1a202c; /* Dark background for futuristic feel */
+      }
+      .bg-primary-blue {
+        background-color: var(--color-primary-blue);
+      }
+      .text-primary-blue {
+        color: var(--color-primary-blue);
+      }
+      .border-primary-blue {
+        border-color: var(--color-primary-blue);
+      }
+      .bg-accent-neon {
+        background-color: var(--color-accent-neon);
+      }
+      .text-accent-neon {
+        color: var(--color-accent-neon);
+      }
+      .bg-dark-bg {
+        background-color: var(--color-dark-bg);
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
+        color: #333;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      .btn-neon {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+        transition: color 0.4s ease-in-out;
+      }
+      .btn-neon::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--color-accent-neon),
+          transparent
+        );
+        transition: left 0.4s ease-in-out;
+        z-index: -1;
+      }
+      .btn-neon:hover::before {
+        left: 100%;
+      }
+      .btn-neon:hover {
+        color: var(--color-dark-bg);
+      }
+      .floating-cta {
+        position: fixed;
+        bottom: 1.5rem;
+        right: 1.5rem;
+        z-index: 50;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      .hamburger-line {
+        width: 24px;
+        height: 3px;
+        background-color: #333;
+        margin: 4px 0;
+        transition: all 0.3s ease-in-out;
+      }
+      .hamburger-active .hamburger-line:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+      }
+      .hamburger-active .hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger-active .hamburger-line:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section (Copy from index.html for consistency) -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-10 sticky top-0 z-40">
+      <nav class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="index.html" class="text-2xl font-extrabold text-primary-blue"
+          >IklaninAja</a
+        >
+
+        <!-- Desktop Navigation -->
+        <ul class="hidden md:flex space-x-8">
+          <li>
+            <a
+              href="index.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="tentang-kami.html" class="text-primary-blue font-semibold"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a
+              href="portofolio.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="testimoni.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a
+              href="kontak.html"
+              class="text-gray-700 hover:text-primary-blue transition duration-300"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+
+        <!-- Mobile Hamburger Menu Button -->
+        <button id="hamburger-button" class="md:hidden focus:outline-none">
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+          <div class="hamburger-line"></div>
+        </button>
+      </nav>
+
+      <!-- Mobile Navigation Menu (Hidden by default) -->
+      <div id="mobile-menu" class="hidden md:hidden mt-4">
+        <ul class="flex flex-col space-y-4 px-4">
+          <li>
+            <a
+              href="index.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              href="tentang-kami.html"
+              class="block text-primary-blue font-semibold py-2"
+              >Tentang Kami</a
+            >
+          </li>
+          <li>
+            <a
+              href="layanan.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Layanan Iklan</a
+            >
+          </li>
+          <li>
+            <a
+              href="portofolio.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Portofolio</a
+            >
+          </li>
+          <li>
+            <a
+              href="testimoni.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Testimoni</a
+            >
+          </li>
+          <li>
+            <a
+              href="kontak.html"
+              class="block text-gray-700 hover:text-primary-blue transition duration-300 py-2"
+              >Kontak</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <section class="py-20 md:py-32 bg-dark-bg text-white text-center">
+        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+          Tentang Kami
+        </h1>
+        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6">
+          Mengenal lebih dekat visi, misi, dan tim di balik IklaninAja.
+        </p>
+      </section>
+
+      <section class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-6">
+          <div class="flex flex-col md:flex-row items-center gap-12 mb-16">
+            <div class="md:w-1/2">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                Visi Kami
+              </h2>
+              <p class="text-gray-700 text-lg">
+                Menjadi penyedia solusi digital marketing terdepan yang
+                memberdayakan UMKM dan bisnis besar untuk mencapai potensi penuh
+                mereka di era digital. Kami membayangkan masa depan di mana
+                setiap bisnis, terlepas dari ukurannya, memiliki akses ke
+                strategi pemasaran yang inovatif dan profesional untuk bersaing
+                di pasar global.
+              </p>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+              <img
+                src="https://placehold.co/500x300/007BFF/FFFFFF?text=Our+Vision"
+                alt="Our Vision Illustration"
+                class="rounded-xl shadow-lg w-full max-w-md"
+              />
+            </div>
+          </div>
+
+          <div
+            class="flex flex-col md:flex-row-reverse items-center gap-12 mb-16"
+          >
+            <div class="md:w-1/2">
+              <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+                Misi Kami
+              </h2>
+              <ul class="list-disc list-inside text-gray-700 text-lg space-y-3">
+                <li>
+                  Menyediakan strategi digital marketing yang inovatif dan
+                  terukur.
+                </li>
+                <li>
+                  Membangun hubungan jangka panjang dengan klien berdasarkan
+                  kepercayaan dan hasil.
+                </li>
+                <li>
+                  Terus beradaptasi dengan tren digital terbaru untuk memberikan
+                  solusi terbaik.
+                </li>
+                <li>
+                  Memberikan layanan yang transparan, etis, dan berorientasi
+                  pada ROI.
+                </li>
+                <li>
+                  Meningkatkan kesadaran digital dan literasi pemasaran bagi
+                  komunitas bisnis.
+                </li>
+              </ul>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+              <img
+                src="https://placehold.co/500x300/00FFFF/1A202C?text=Our+Mission"
+                alt="Our Mission Illustration"
+                class="rounded-xl shadow-lg w-full max-w-md"
+              />
+            </div>
+          </div>
+
+          <div class="text-center mt-16">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
+              Tim Kami
+            </h2>
+            <p class="text-lg text-gray-700 max-w-3xl mx-auto mb-10">
+              Kami adalah tim profesional yang bersemangat dengan keahlian
+              beragam di bidang pemasaran digital, desain, dan teknologi.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Team Member 1 -->
+              <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <img
+                  src="https://placehold.co/150x150/007BFF/FFFFFF?text=CEO"
+                  alt="Team Member 1"
+                  class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"
+                />
+                <h3 class="text-xl font-semibold text-gray-800">John Doe</h3>
+                <p class="text-primary-blue">CEO & Digital Strategist</p>
+                <p class="text-gray-600 text-sm mt-2">
+                  Berpengalaman lebih dari 10 tahun dalam mengembangkan strategi
+                  digital untuk berbagai industri.
+                </p>
+              </div>
+              <!-- Team Member 2 -->
+              <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <img
+                  src="https://placehold.co/150x150/00FFFF/1A202C?text=CMO"
+                  alt="Team Member 2"
+                  class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"
+                />
+                <h3 class="text-xl font-semibold text-gray-800">Jane Smith</h3>
+                <p class="text-primary-blue">Head of Marketing</p>
+                <p class="text-gray-600 text-sm mt-2">
+                  Ahli dalam kampanye media sosial dan analisis data untuk
+                  optimasi ROI.
+                </p>
+              </div>
+              <!-- Team Member 3 -->
+              <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                <img
+                  src="https://placehold.co/150x150/1A202C/00FFFF?text=Lead+Designer"
+                  alt="Team Member 3"
+                  class="rounded-full w-32 h-32 mx-auto mb-4 object-cover"
+                />
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Michael Brown
+                </h3>
+                <p class="text-primary-blue">Lead Creative Designer</p>
+                <p class="text-gray-600 text-sm mt-2">
+                  Menciptakan visual yang menarik dan branding yang kuat untuk
+                  klien.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Floating CTA Button -->
+    <a
+      href="kontak.html"
+      class="floating-cta bg-primary-blue text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 btn-neon"
+    >
+      Order Sekarang
+    </a>
+
+    <!-- Footer Section (Copy from index.html for consistency) -->
+    <footer class="bg-gray-800 text-white py-8 px-6 md:px-10">
+      <div class="container mx-auto text-center">
+        <p>&copy; 2025 IklaninAja. Semua Hak Dilindungi.</p>
+        <div class="mt-4 space-x-4">
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Kebijakan Privasi</a
+          >
+          <a
+            href="#"
+            class="text-gray-400 hover:text-white transition duration-300"
+            >Syarat & Ketentuan</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Link to external JavaScript file -->
+    <script src="js/main.js"></script>
+  </body>
+</html>
