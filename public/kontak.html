@@ -22,6 +22,7 @@
         --color-primary-blue: #007bff; /* Electric Blue */
         --color-accent-neon: #00ffff; /* Neon */
         --color-dark-bg: #1a202c; /* Dark background for futuristic feel */
+        --color-iklanin-green: #286e79; /* Custom color for 'Iklanin' */
       }
       .bg-primary-blue {
         background-color: var(--color-primary-blue);
@@ -41,6 +42,9 @@
       .bg-dark-bg {
         background-color: var(--color-dark-bg);
       }
+      .text-iklanin-green {
+        color: var(--color-iklanin-green);
+      } /* New class for custom color */
 
       body {
         font-family: "Inter", sans-serif;
@@ -128,9 +132,10 @@
     <header class="bg-white shadow-md py-4 px-6 md:px-10 sticky top-0 z-40">
       <nav class="container mx-auto flex justify-between items-center">
         <!-- Logo -->
-        <a href="index.html" class="text-2xl font-extrabold text-primary-blue"
-          >IklaninAja</a
-        >
+        <a href="index.html" class="text-2xl font-extrabold">
+          <span class="text-iklanin-green">Iklanin</span
+          ><span class="text-black">Aja</span>
+        </a>
 
         <!-- Desktop Navigation -->
         <ul class="hidden md:flex space-x-8">
