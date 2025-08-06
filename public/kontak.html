@@ -112,12 +112,13 @@
         display: flex;
         align-items: flex-start; /* Align icon and text at the top */
         text-align: left; /* Ensure text aligns left */
-        justify-content: center; /* Center items horizontally on small screens */
+        /* Removed justify-content: center; for mobile */
       }
-      @media (min-width: 768px) {
-        /* md breakpoint */
+      /* Only apply justify-content: flex-start for md and up, or ensure it's default */
+      @media (max-width: 767px) {
+        /* Apply specifically for mobile screens */
         .contact-item {
-          justify-content: flex-start; /* Align to start on larger screens */
+          justify-content: flex-start; /* Align to start on mobile screens */
         }
       }
       .contact-item .icon {
@@ -324,7 +325,9 @@
               <h3 class="text-2xl font-semibold text-gray-800 mb-4">
                 Chat Langsung
               </h3>
-              <div class="flex space-x-4 justify-center flex-wrap gap-4">
+              <div
+                class="flex flex-col md:flex-row justify-center items-center gap-4"
+              >
                 <a
                   href="https://wa.me/+6281224215656"
                   target="_blank"
