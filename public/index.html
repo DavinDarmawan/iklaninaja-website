@@ -29,6 +29,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
+    <!-- css animasi -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
     <style>
       /* Custom colors for Tailwind */
       :root {
@@ -627,5 +631,13 @@
 
     <!-- Link to external JavaScript file -->
     <script src="js/main.js"></script>
+    <!-- Tepat sebelum </body> -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800, // Durasi animasi dalam milidetik
+        once: true, // Animasi hanya terjadi sekali
+      });
+    </script>
   </body>
 </html>
