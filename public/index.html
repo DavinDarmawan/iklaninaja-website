@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -24,7 +24,7 @@
 
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Inter (or Poppins/Plus Jakarta Sans if preferred) -->
+    <!-- Google Fonts: Inter -->
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
@@ -32,14 +32,19 @@
 
     <!-- css animasi -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
 
     <style>
       /* Custom colors for Tailwind */
       :root {
-        --color-primary-blue: #007bff; /* Electric Blue */
-        --color-accent-neon: #286e79; /* Neon */
-        --color-dark-bg: #1a202c; /* Dark background for futuristic feel */
-        --color-iklanin-green: #286e79; /* Custom color for 'Iklanin' */
+        --color-primary-blue: #007bff;
+        --color-accent-neon: #286e79;
+        --color-dark-bg: #1a202c;
+        --color-iklanin-green: #286e79;
       }
       .bg-primary-blue {
         background-color: var(--color-primary-blue);
@@ -61,18 +66,16 @@
       }
       .text-iklanin-green {
         color: var(--color-iklanin-green);
-      } /* New class for custom color */
+      }
 
       body {
-        font-family: "Inter", sans-serif; /* Using Inter as default */
-        background-color: #f8fafc; /* Light background for clean feel */
+        font-family: "Inter", sans-serif;
+        background-color: #f8fafc;
         color: #333;
       }
-      /* Smooth scroll for anchor links */
       html {
         scroll-behavior: smooth;
       }
-      /* Custom button styling for neon effect */
       .btn-neon {
         position: relative;
         overflow: hidden;
@@ -99,20 +102,30 @@
         left: 100%;
       }
       .btn-neon:hover {
-        color: var(--color-dark-bg); /* Text color changes on hover */
+        color: var(--color-dark-bg);
       }
 
-      /* Floating CTA button */
       .floating-cta {
         position: fixed;
         bottom: 1.5rem;
         right: 1.5rem;
         z-index: 50;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
           0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        animation: bounce 2s infinite;
       }
 
-      /* Hamburger menu animation */
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+
       .hamburger-line {
         width: 24px;
         height: 3px;
@@ -130,7 +143,6 @@
         transform: translateY(-7px) rotate(-45deg);
       }
 
-      /* Basic animation for hero section elements */
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -149,14 +161,399 @@
           transform: translateY(0);
         }
       }
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes slideLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideRight {
+        from {
+          opacity: 0;
+          transform: translateX(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-60px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes continuousSlide {
+        0% {
+          transform: translateX(-100px);
+          opacity: 0;
+        }
+        15% {
+          opacity: 1;
+        }
+        85% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateX(100px);
+          opacity: 0;
+        }
+      }
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(0, 123, 255, 0.8);
+        }
+      }
+
+      /* Background animation keyframes */
+      @keyframes gradient-shift {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes float-blob {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        25% {
+          transform: translateY(-20px) translateX(10px);
+        }
+        50% {
+          transform: translateY(-40px) translateX(-10px);
+        }
+        75% {
+          transform: translateY(-20px) translateX(10px);
+        }
+      }
+
+      @keyframes float-blob-slow {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        25% {
+          transform: translateY(15px) translateX(-15px);
+        }
+        50% {
+          transform: translateY(30px) translateX(15px);
+        }
+        75% {
+          transform: translateY(15px) translateX(-15px);
+        }
+      }
+
+      @keyframes float-blob-reverse {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        25% {
+          transform: translateY(-25px) translateX(-20px);
+        }
+        50% {
+          transform: translateY(-35px) translateX(20px);
+        }
+        75% {
+          transform: translateY(-20px) translateX(-15px);
+        }
+      }
+
       .animate-fade-in {
         animation: fadeIn 1s ease-out forwards;
       }
       .animate-slide-up {
-        animation: slideUp 1s ease-out forwards 0.5s; /* Delay for paragraph */
+        animation: slideUp 1s ease-out forwards 0.5s;
+      }
+      .animate-slide-down {
+        animation: slideDown 0.8s ease-out forwards;
       }
 
-      /* Loading spinner */
+      /* Section background enhancements */
+      .hero-animated-bg {
+        background: linear-gradient(-45deg, #007bff, #1a202c, #286e79, #0d47a1);
+        background-size: 400% 400%;
+        animation: gradient-shift 15s ease infinite;
+      }
+
+      .stat-animated-bg {
+        background: linear-gradient(
+          135deg,
+          #007bff 0%,
+          #0d47a1 25%,
+          #1a5490 50%,
+          #0d47a1 75%,
+          #007bff 100%
+        );
+        background-size: 200% 200%;
+        animation: gradient-shift 20s ease infinite;
+      }
+
+      .floating-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(40px);
+        animation: float-blob 20s ease-in-out infinite;
+      }
+
+      .floating-blob-slow {
+        animation: float-blob-slow 25s ease-in-out infinite;
+      }
+
+      .floating-blob-reverse {
+        animation: float-blob-reverse 22s ease-in-out infinite;
+      }
+
+      /* Counter styles */
+      .stat-number {
+        font-size: 3.5rem;
+        font-weight: 900;
+        color: #ffffff;
+        line-height: 1;
+        display: block;
+        margin: 1rem 0;
+      }
+
+      /* Stats card styles */
+      .stat-card {
+        background: rgba(30, 60, 130, 0.5);
+        backdrop-filter: blur(10px);
+        border-radius: 1.25rem;
+        padding: 2.5rem 2rem;
+        border: 2px solid rgba(255, 255, 255, 0.4);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 320px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      }
+
+      .stat-card:hover {
+        background: rgba(30, 60, 130, 0.7);
+        transform: translateY(-15px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.35);
+        border-color: rgba(255, 255, 255, 0.8);
+      }
+
+      .stat-number {
+        font-size: 4.5rem;
+        font-weight: 900;
+        color: #ffff00;
+        line-height: 1;
+        margin: 1rem 0 0.5rem 0;
+        display: block;
+        text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+        letter-spacing: -1px;
+      }
+
+      .stat-icon {
+        font-size: 4.5rem;
+        margin-bottom: 1.2rem;
+        display: inline-block;
+        animation: bounce-icon 2.5s ease-in-out infinite;
+        color: #ffffff;
+        opacity: 0.95;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+
+      .stat-icon i {
+        font-size: 3rem;
+      }
+
+      @keyframes bounce-icon {
+        0%,
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 0.95;
+        }
+        50% {
+          transform: translateY(-15px) scale(1.1);
+          opacity: 1;
+        }
+      }
+
+      .stat-label {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-top: 0.5rem;
+        color: #ffffff;
+        letter-spacing: 0.5px;
+        text-align: center;
+      }
+
+      .stat-description {
+        font-size: 0.9rem;
+        margin-top: 0.75rem;
+        color: rgba(255, 255, 255, 0.9);
+        text-align: center;
+        line-height: 1.5;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.25);
+        border-radius: 4px;
+        margin-top: 1.5rem;
+        overflow: hidden;
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #4ade80, #10b981, #06b6d4);
+        border-radius: 4px;
+        width: 0%;
+        animation: fill-progress 2s ease-out forwards;
+        box-shadow: 0 0 10px rgba(74, 222, 128, 0.5);
+      }
+
+      @keyframes fill-progress {
+        from {
+          width: 0%;
+          opacity: 0;
+        }
+        to {
+          width: 100%;
+          opacity: 1;
+        }
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.3s ease-out;
+        padding: 1rem;
+        overflow-y: auto;
+      }
+      .modal.active {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 2rem;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        max-width: 500px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        animation: slideUp 0.3s ease-out;
+      }
+
+      .modal-content.max-w-2xl {
+        max-width: 700px;
+      }
+
+      @media (max-width: 640px) {
+        .modal {
+          padding: 0.5rem;
+        }
+        .modal-content {
+          padding: 1.5rem;
+          border-radius: 0.75rem;
+        }
+      }
+      .close-modal {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .close-modal:hover,
+      .close-modal:focus {
+        color: #000;
+      }
+
+      /* Tab styles */
+      .tab-button {
+        padding: 0.75rem 1.5rem;
+        margin: 0.5rem;
+        background-color: #e5e7eb;
+        border: none;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+      }
+      .tab-button.active {
+        background-color: var(--color-primary-blue);
+        color: white;
+      }
+      .tab-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .tab-content {
+        display: none;
+        animation: slideDown 0.3s ease-out;
+      }
+      .tab-content.active {
+        display: block;
+      }
+
+      /* Spinner for loading */
       .spinner {
         border: 4px solid rgba(0, 0, 0, 0.1);
         border-left-color: var(--color-primary-blue);
@@ -164,11 +561,160 @@
         width: 24px;
         height: 24px;
         animation: spin 1s linear infinite;
+        display: inline-block;
       }
       @keyframes spin {
         to {
           transform: rotate(360deg);
         }
+      }
+
+      /* Service card enhanced styles */
+      .service-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+      }
+      .service-card:hover {
+        transform: translateY(-8px);
+      }
+      .service-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 123, 255, 0.1),
+          transparent
+        );
+        border-radius: 0.75rem;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .service-card:hover::after {
+        opacity: 1;
+      }
+
+      /* Button loading state */
+      .btn-loading {
+        pointer-events: none;
+        opacity: 0.7;
+      }
+      .btn-loading .spinner {
+        margin-right: 0.5rem;
+      }
+
+      /* Floating particles background */
+      .particle {
+        position: absolute;
+        pointer-events: none;
+      }
+
+      /* Scroll indicator */
+      .scroll-indicator {
+        animation: scroll-bounce 2s infinite;
+      }
+      @keyframes scroll-bounce {
+        0%,
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+        50% {
+          opacity: 0.5;
+          transform: translateY(10px);
+        }
+      }
+
+      /* Premium section backgrounds */
+      .section-light-bg {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-light-bg::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 123, 255, 0.08) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float-blob 25s ease-in-out infinite;
+      }
+
+      .section-light-bg::after {
+        content: "";
+        position: absolute;
+        bottom: -20%;
+        left: -5%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(40, 110, 121, 0.05) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float-blob-slow 30s ease-in-out infinite;
+      }
+
+      .section-dark-bg {
+        background: linear-gradient(
+          135deg,
+          #1a202c 0%,
+          #2d3748 50%,
+          #1a202c 100%
+        );
+        background-size: 200% 200%;
+        animation: gradient-shift 25s ease infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-dark-bg::before {
+        content: "";
+        position: absolute;
+        top: -30%;
+        right: -15%;
+        width: 600px;
+        height: 600px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 123, 255, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float-blob 22s ease-in-out infinite;
+      }
+
+      .section-dark-bg::after {
+        content: "";
+        position: absolute;
+        bottom: -25%;
+        left: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(40, 110, 121, 0.1) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float-blob-reverse 28s ease-in-out infinite;
+      }
+
+      .section-content {
+        position: relative;
+        z-index: 10;
       }
     </style>
   </head>
@@ -177,7 +723,10 @@
     <header class="bg-white shadow-md py-4 px-6 md:px-10 sticky top-0 z-40">
       <nav class="container mx-auto flex justify-between items-center">
         <!-- Logo -->
-        <a href="index.html" class="text-2xl font-extrabold">
+        <a
+          href="index.html"
+          class="text-2xl font-extrabold transition duration-300 hover:scale-110"
+        >
           <span class="text-iklanin-green">Iklanin</span
           ><span class="text-black">aja</span>
         </a>
@@ -185,44 +734,64 @@
         <!-- Desktop Navigation -->
         <ul class="hidden md:flex space-x-8">
           <li>
-            <a href="index.html" class="text-primary-blue font-semibold"
-              >Home</a
-            >
+            <a
+              href="index.html"
+              class="text-primary-blue font-semibold relative group"
+              >Home
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="tentang-kami.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Tentang Kami</a
-            >
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
+              >Tentang Kami
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="layanan.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Layanan Kami</a
-            >
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
+              >Layanan Kami
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="portofolio.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Portofolio</a
-            >
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
+              >Portofolio
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="testimoni.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Testimoni</a
-            >
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
+              >Testimoni
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="kontak.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Kontak</a
-            >
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
+              >Kontak
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
         </ul>
 
@@ -286,10 +855,9 @@
     <main>
       <!-- Hero Section -->
       <section
-        id="home"
-        class="relative bg-dark-bg text-white py-20 md:py-32 overflow-hidden"
+        class="min-h-screen w-full text-white overflow-hidden hero-animated-bg flex items-center justify-center relative"
       >
-        <div class="container mx-auto text-center px-6">
+        <div class="container mx-auto text-center px-6 section-content py-20">
           <h1
             class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in"
           >
@@ -302,7 +870,6 @@
             Dengan desain profesional dan strategi digital yang tepat, kami
             bantu bisnis Anda bersinar.
           </p>
-          <!-- Added items-center for better mobile centering -->
           <div
             class="flex flex-col md:flex-row justify-center items-center gap-4"
           >
@@ -320,29 +887,127 @@
             </a>
           </div>
         </div>
-        <!-- Placeholder for auto-scrolling promo section (can be implemented with JS later) -->
         <div
           class="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-dark-bg to-transparent"
         ></div>
       </section>
 
+      <!-- Statistics Section (NEW) -->
+      <section
+        id="statistik"
+        class="py-20 md:py-32 text-white relative overflow-hidden stat-animated-bg"
+      >
+        <!-- Background animation -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+          <div
+            class="floating-blob absolute top-0 left-0 w-96 h-96 bg-white rounded-full"
+          ></div>
+          <div
+            class="floating-blob floating-blob-slow absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full"
+          ></div>
+          <div
+            class="floating-blob floating-blob-reverse absolute top-1/2 left-1/4 w-64 h-64 bg-white rounded-full"
+          ></div>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+            Komitmen Kami untuk Kesuksesan Anda
+          </h2>
+          <p class="text-center text-lg opacity-90 mb-16 max-w-2xl mx-auto">
+            Meskipun baru memulai, kami berkomitmen memberikan layanan
+            berkualitas tinggi dengan fokus pada hasil yang terukur
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Stat Card 1 -->
+            <div class="stat-card" data-stat="100" data-progress="100">
+              <div class="stat-icon"><i class="fas fa-certificate"></i></div>
+              <div class="stat-number">100%</div>
+              <p class="stat-label">Komitmen Kualitas</p>
+              <p class="stat-description">
+                Setiap kampanye dirancang dengan strategi terbaik
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="--progress: 100%"></div>
+              </div>
+            </div>
+
+            <!-- Stat Card 2 -->
+            <div class="stat-card" data-stat="24" data-progress="100">
+              <div class="stat-icon"><i class="fas fa-clock"></i></div>
+              <div class="stat-number">24/7</div>
+              <p class="stat-label">Support Responsif</p>
+              <p class="stat-description">
+                Tim siap membantu pertanyaan Anda kapan saja
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="--progress: 100%"></div>
+              </div>
+            </div>
+
+            <!-- Stat Card 3 -->
+            <div
+              class="stat-card"
+              data-stat="100"
+              data-progress="100"
+              data-suffix="%"
+            >
+              <div class="stat-icon"><i class="fas fa-shield-alt"></i></div>
+              <div class="stat-number">100%</div>
+              <p class="stat-label">Transparansi Penuh</p>
+              <p class="stat-description">
+                Laporan detail dan analisis setiap kampanye
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="--progress: 100%"></div>
+              </div>
+            </div>
+
+            <!-- Stat Card 4 -->
+            <div class="stat-card" data-stat="5" data-progress="100">
+              <div class="stat-icon"><i class="fas fa-award"></i></div>
+              <div class="stat-number">5+</div>
+              <p class="stat-label">Tahun Pengalaman</p>
+              <p class="stat-description">
+                Tim berpengalaman dalam digital marketing
+              </p>
+              <div class="progress-bar">
+                <div class="progress-fill" style="--progress: 100%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Tentang Kami Section -->
-      <section id="tentang-kami" class="py-16 md:py-24 bg-white">
+      <section id="tentang-kami" class="py-16 md:py-24 section-light-bg">
         <div
-          class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12"
+          class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 section-content"
         >
-          <div class="md:w-1/2">
-            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">
+          <div
+            class="md:w-1/2 animate-slide-left"
+            style="animation: slideLeft 0.8s ease-out forwards"
+          >
+            <h2
+              class="text-3xl md:text-4xl font-bold text-gray-800 mb-6"
+              style="animation: slideUp 0.8s ease-out 0.2s both"
+            >
               Tentang <span class="text-iklanin-green">Iklanin</span>aja
             </h2>
-            <p class="text-gray-700 text-lg mb-4">
+            <p
+              class="text-gray-700 text-lg mb-4"
+              style="animation: slideUp 0.8s ease-out 0.3s both"
+            >
               IklaninAja hadir sebagai mitra strategis Anda dalam menghadapi
               tantangan dunia digital. Kami percaya setiap usaha, besar maupun
               kecil, berhak mendapatkan visibilitas dan pertumbuhan yang
               maksimal. Dengan tim ahli dan pendekatan yang inovatif, kami siap
               mengubah visi Anda menjadi kenyataan.
             </p>
-            <p class="text-gray-700 text-lg mb-6">
+            <p
+              class="text-gray-700 text-lg mb-6"
+              style="animation: slideUp 0.8s ease-out 0.4s both"
+            >
               Kami berdedikasi untuk menyediakan solusi digital marketing yang
               efektif, mulai dari strategi iklan yang terukur, desain kreatif
               yang memukau, hingga analisis performa yang mendalam. Mari bersama
@@ -351,62 +1016,89 @@
             <a
               href="kontak.html"
               class="inline-block bg-primary-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 btn-neon"
+              style="animation: slideUp 0.8s ease-out 0.5s both"
             >
               Mulai Kolaborasi
             </a>
           </div>
-          <div class="md:w-1/2 flex justify-center items-center">
-            <!-- Placeholder for an illustration or image related to digital marketing -->
+          <div
+            class="md:w-1/2 flex justify-center items-center animate-slide-right"
+            style="animation: slideRight 0.8s ease-out forwards"
+          >
             <img
               src="images/Iklaninaja-ilustration.png"
               alt="Ilustrasi Digital Marketing"
-              class="rounded-xl shadow-lg w-full max-w-md md:max-w-full"
+              class="rounded-xl shadow-lg w-full max-w-md md:max-w-full transition duration-300 hover:scale-105"
+              style="animation: scaleIn 0.8s ease-out 0.3s both"
             />
           </div>
         </div>
       </section>
 
       <!-- Layanan Iklan Section -->
-      <section id="layanan" class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+      <section id="layanan" class="py-16 md:py-24 section-light-bg">
+        <div class="container mx-auto px-6 text-center section-content">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 mb-12"
+            style="animation: slideUp 0.8s ease-out forwards"
+          >
             Layanan Digital Marketing Kami
           </h2>
-          <p class="text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
+          <p
+            class="text-lg text-gray-600 mb-10 max-w-3xl mx-auto"
+            style="animation: slideUp 0.8s ease-out 0.2s both"
+          >
             Kami menawarkan berbagai layanan yang dirancang untuk meningkatkan
             kehadiran digital dan pertumbuhan bisnis Anda.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Layanan Item 1 -->
             <div
-              class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 border-t-4 border-primary-blue"
+              class="service-card relative bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-primary-blue cursor-pointer transform hover:-translate-y-2"
+              data-service="digital-advertising"
+              style="animation: slideUp 0.8s ease-out 0.3s both"
             >
-              <div class="text-primary-blue text-5xl mb-4">💡</div>
-              <!-- Placeholder Icon -->
+              <div
+                class="text-primary-blue text-5xl mb-4 transform transition duration-300 group-hover:scale-110"
+              >
+                💡
+              </div>
               <h3 class="text-xl font-semibold mb-3">Digital Advertising</h3>
               <p class="text-gray-600">
                 Layanan iklan berbayar di berbagai platform digital untuk
                 meningkatkan jangkauan, awareness, dan konversi bisnis.
               </p>
+              <button
+                class="mt-4 text-primary-blue font-semibold hover:underline"
+              >
+                Selengkapnya →
+              </button>
             </div>
             <!-- Layanan Item 2 -->
             <div
-              class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 border-t-4 border-primary-blue"
+              class="service-card relative bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-primary-blue cursor-pointer transform hover:-translate-y-2"
+              data-service="website-development"
+              style="animation: slideUp 0.8s ease-out 0.4s both"
             >
               <div class="text-primary-blue text-5xl mb-4">🔍</div>
-              <!-- Placeholder Icon -->
               <h3 class="text-xl font-semibold mb-3">Website Development</h3>
               <p class="text-gray-600">
                 Pembuatan dan pengelolaan website yang fungsional, userfriendly,
                 dan sesuai kebutuhan bisnis.
               </p>
+              <button
+                class="mt-4 text-primary-blue font-semibold hover:underline"
+              >
+                Selengkapnya →
+              </button>
             </div>
             <!-- Layanan Item 3 -->
             <div
-              class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 border-t-4 border-primary-blue"
+              class="service-card relative bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-primary-blue cursor-pointer transform hover:-translate-y-2"
+              data-service="social-media"
+              style="animation: slideUp 0.8s ease-out 0.5s both"
             >
               <div class="text-primary-blue text-5xl mb-4">🎵</div>
-              <!-- Placeholder Icon -->
               <h3 class="text-xl font-semibold mb-3">
                 Social Media Management
               </h3>
@@ -414,35 +1106,53 @@
                 Pengelolaan akun media sosial untuk menjaga branding,
                 engagement, dan komunikasi dengan audiens.
               </p>
+              <button
+                class="mt-4 text-primary-blue font-semibold hover:underline"
+              >
+                Selengkapnya →
+              </button>
             </div>
             <!-- Layanan Item 4 -->
             <div
-              class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 border-t-4 border-primary-blue"
+              class="service-card relative bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-primary-blue cursor-pointer transform hover:-translate-y-2"
+              data-service="visual-branding"
+              style="animation: slideUp 0.8s ease-out 0.3s both"
             >
               <div class="text-primary-blue text-5xl mb-4">🎨</div>
-              <!-- Placeholder Icon -->
               <h3 class="text-xl font-semibold mb-3">Visual Branding</h3>
               <p class="text-gray-600">
                 Konsep kampanye kreatif yang bertujuan meningkatkan awareness,
                 engagement, dan citra brand secara lebih unik & berkesan.
               </p>
+              <button
+                class="mt-4 text-primary-blue font-semibold hover:underline"
+              >
+                Selengkapnya →
+              </button>
             </div>
             <!-- Layanan Item 5 -->
             <div
-              class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition duration-300 transform hover:scale-105 border-t-4 border-primary-blue"
+              class="service-card relative bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition duration-500 border-t-4 border-primary-blue cursor-pointer transform hover:-translate-y-2"
+              data-service="digital-consultant"
+              style="animation: slideUp 0.8s ease-out 0.4s both"
             >
               <div class="text-primary-blue text-5xl mb-4">📊</div>
-              <!-- Placeholder Icon -->
               <h3 class="text-xl font-semibold mb-3">Digital Consultant</h3>
               <p class="text-gray-600">
                 Layanan konsultasi strategi digital untuk membantu bisnis
                 mengambil keputusan yang tepat dalam transformasi digital.
               </p>
+              <button
+                class="mt-4 text-primary-blue font-semibold hover:underline"
+              >
+                Selengkapnya →
+              </button>
             </div>
           </div>
           <a
             href="layanan.html"
             class="mt-12 inline-block bg-dark-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition duration-300 transform hover:scale-105 btn-neon"
+            style="animation: slideUp 0.8s ease-out 0.5s both"
           >
             Lihat Semua Layanan
           </a>
@@ -450,24 +1160,43 @@
       </section>
 
       <!-- Portofolio Section -->
-      <section id="portofolio" class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+      <section id="portofolio" class="py-16 md:py-24 section-light-bg">
+        <div class="container mx-auto px-6 text-center section-content">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 mb-12"
+            style="animation: slideUp 0.8s ease-out forwards"
+          >
             Hasil Kerja Kami yang
             <span class="text-primary-blue">Mengagumkan</span>
           </h2>
-          <p class="text-lg text-gray-600 mb-10 max-w-3xl mx-auto">
+          <p
+            class="text-lg text-gray-600 mb-10 max-w-3xl mx-auto"
+            style="animation: slideUp 0.8s ease-out 0.2s both"
+          >
             Lihatlah beberapa kampanye digital yang telah kami sukseskan untuk
             berbagai klien.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Portfolio Item 1 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 portfolio-item cursor-pointer"
+              data-portfolio="produsen-seragam"
+              style="animation: slideUp 0.8s ease-out 0.3s both"
+            >
               <img
                 src="https://placehold.co/600x400/007BFF/FFFFFF?text=Campaign+1"
                 alt="Campaign Result 1"
-                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110"
               />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="portfolio-btn opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
+                >
+                  Lihat Detail
+                </button>
+              </div>
               <div class="p-6">
                 <h3 class="text-xl font-semibold mb-2 text-gray-800">
                   Produsen Seragam
@@ -478,12 +1207,25 @@
               </div>
             </div>
             <!-- Portfolio Item 2 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 portfolio-item cursor-pointer"
+              data-portfolio="madu-langit"
+              style="animation: slideUp 0.8s ease-out 0.4s both"
+            >
               <img
                 src="https://placehold.co/600x400/00FFFF/1A202C?text=Campaign+2"
                 alt="Campaign Result 2"
-                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110"
               />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="portfolio-btn opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
+                >
+                  Lihat Detail
+                </button>
+              </div>
               <div class="p-6">
                 <h3 class="text-xl font-semibold mb-2 text-gray-800">
                   Madu Langit
@@ -495,12 +1237,25 @@
               </div>
             </div>
             <!-- Portfolio Item 3 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 portfolio-item cursor-pointer"
+              data-portfolio="kopilahdulu"
+              style="animation: slideUp 0.8s ease-out 0.5s both"
+            >
               <img
                 src="https://placehold.co/600x400/1A202C/00FFFF?text=Campaign+3"
                 alt="Campaign Result 3"
-                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-105"
+                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110"
               />
+              <div
+                class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center"
+              >
+                <button
+                  class="portfolio-btn opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
+                >
+                  Lihat Detail
+                </button>
+              </div>
               <div class="p-6">
                 <h3 class="text-xl font-semibold mb-2 text-gray-800">
                   kopilahdulu
@@ -515,6 +1270,7 @@
           <a
             href="portofolio.html"
             class="mt-12 inline-block bg-dark-bg text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition duration-300 transform hover:scale-105 btn-neon"
+            style="animation: slideUp 0.8s ease-out 0.6s both"
           >
             Lihat Lebih Banyak Portofolio
           </a>
@@ -522,44 +1278,52 @@
       </section>
 
       <!-- Official Partner With Section (Replacing Simulasi Harga) -->
-      <section id="official-partners" class="py-16 md:py-24 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+      <section id="official-partners" class="py-16 md:py-24 section-light-bg">
+        <div class="container mx-auto px-6 text-center section-content">
+          <h2
+            class="text-3xl md:text-4xl font-bold text-gray-800 mb-12"
+            style="animation: slideUp 0.8s ease-out forwards"
+          >
             Official Partner With
           </h2>
           <div
             class="flex flex-wrap justify-center items-center gap-8 md:gap-12"
           >
-            <!-- Partner logos with correct paths -->
             <img
               src="images/Facebook-Ads.png"
               alt="Facebook Ads Logo"
-              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-300"
+              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-500 cursor-pointer hover:scale-125 transform"
+              style="animation: continuousSlide 4s ease-in-out infinite"
             />
             <img
               src="images/Google-Ads.webp"
               alt="Google Ads Logo"
-              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-300"
+              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-500 cursor-pointer hover:scale-125 transform"
+              style="animation: continuousSlide 4s ease-in-out 0.3s infinite"
             />
             <img
               src="images/Instagram-Ads.webp"
               alt="Instagram Ads Logo"
-              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-300"
+              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-500 cursor-pointer hover:scale-125 transform"
+              style="animation: continuousSlide 4s ease-in-out 0.6s infinite"
             />
             <img
               src="images/Tiktok-Ads.webp"
               alt="TikTok Ads Logo"
-              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-300"
+              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-500 cursor-pointer hover:scale-125 transform"
+              style="animation: continuousSlide 4s ease-in-out 0.9s infinite"
             />
             <img
               src="images/Youtube-Ads.webp"
               alt="YouTube Advertising Logo"
-              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-300"
+              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-500 cursor-pointer hover:scale-125 transform"
+              style="animation: continuousSlide 4s ease-in-out 1.2s infinite"
             />
             <img
               src="images/Ecommerce-Ads.webp"
               alt="E-commerce Ads Logo"
-              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-300"
+              class="h-12 object-contain filter grayscale hover:grayscale-0 transition duration-500 cursor-pointer hover:scale-125 transform"
+              style="animation: continuousSlide 4s ease-in-out 1.5s infinite"
             />
           </div>
         </div>
@@ -568,39 +1332,98 @@
       <!-- Call to Action Section -->
       <section
         id="kontak"
-        class="py-16 md:py-24 bg-dark-bg text-white text-center"
+        class="py-16 md:py-24 text-white text-center relative overflow-hidden section-dark-bg"
       >
-        <div class="container mx-auto px-6">
-          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+        <div class="container mx-auto px-6 section-content">
+          <h2
+            class="text-3xl md:text-4xl font-bold mb-6"
+            style="animation: slideUp 0.8s ease-out forwards"
+          >
             Siap Mengembangkan Bisnis Anda?
           </h2>
-          <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto">
+          <p
+            class="text-lg md:text-xl mb-10 max-w-2xl mx-auto"
+            style="animation: slideUp 0.8s ease-out 0.2s both"
+          >
             Jangan lewatkan kesempatan untuk membawa brand Anda ke level
             selanjutnya. Hubungi kami sekarang untuk konsultasi gratis!
           </p>
-          <!-- Added flex-col and items-center for better mobile centering -->
-          <!-- <div
-            class="flex flex-col md:flex-row justify-center items-center gap-4"
+          <a
+            href="kontak.html"
+            class="inline-block bg-primary-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105"
+            style="animation: slideUp 0.8s ease-out 0.4s both"
           >
-            <a
-              href="https://wa.me/+6281224215656"
-              target="_blank"
-              class="inline-block bg-green-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-green-600 transition duration-300 transform hover:scale-105"
-            >
-              Chat via WhatsApp
-            </a>
-            <a
-              href="https://t.me/YOUR_TELEGRAM_USERNAME"
-              target="_blank"
-              class="inline-block bg-blue-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-600 transition duration-300 transform hover:scale-105"
-            >
-              Chat via Telegram
-            </a>
-          </div> -->
-          <!-- Removed Simple Contact Form Placeholder -->
+            Hubungi Kami Sekarang
+          </a>
         </div>
       </section>
     </main>
+
+    <!-- Service Detail Modal -->
+    <div id="serviceModal" class="modal">
+      <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-4"></h2>
+        <p id="modalDescription" class="text-gray-600 mb-6"></p>
+        <div id="modalFeatures" class="mb-6"></div>
+        <a
+          href="kontak.html"
+          class="inline-block bg-primary-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition duration-300"
+        >
+          Hubungi Kami
+        </a>
+      </div>
+    </div>
+
+    <!-- Portfolio Detail Modal -->
+    <div id="portfolioModal" class="modal">
+      <div class="modal-content max-w-2xl">
+        <div class="flex justify-between items-start mb-4">
+          <h2 id="portfolioTitle" class="text-3xl font-bold text-gray-800"></h2>
+          <span
+            class="close-modal-portfolio cursor-pointer text-2xl text-gray-400 hover:text-gray-600"
+            >&times;</span
+          >
+        </div>
+        <img
+          id="portfolioImage"
+          src=""
+          alt="Portfolio"
+          class="w-full h-64 object-cover rounded-lg mb-6"
+        />
+        <p
+          id="portfolioDescription"
+          class="text-gray-600 mb-6 leading-relaxed text-sm md:text-base"
+        ></p>
+
+        <div class="mb-6">
+          <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3">
+            Hasil Kampanye
+          </h3>
+          <div
+            id="portfolioResults"
+            class="space-y-2 text-sm md:text-base"
+          ></div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3">
+            Strategi yang Digunakan
+          </h3>
+          <div
+            id="portfolioStrategy"
+            class="space-y-2 text-sm md:text-base"
+          ></div>
+        </div>
+
+        <a
+          href="https://wa.me/+6281224215656"
+          class="inline-block bg-primary-blue text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300 text-sm md:text-base"
+        >
+          Konsultasi Sekarang
+        </a>
+      </div>
+    </div>
 
     <!-- Floating CTA Button -->
     <a
@@ -629,14 +1452,13 @@
       </div>
     </footer>
 
-    <!-- Link to external JavaScript file -->
+    <!-- Scripts -->
     <script src="js/main.js"></script>
-    <!-- Tepat sebelum </body> -->
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
       AOS.init({
-        duration: 800, // Durasi animasi dalam milidetik
-        once: true, // Animasi hanya terjadi sekali
+        duration: 800,
+        once: true,
       });
     </script>
   </body>

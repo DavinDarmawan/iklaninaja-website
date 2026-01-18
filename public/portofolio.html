@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -94,7 +94,8 @@
         bottom: 1.5rem;
         right: 1.5rem;
         z-index: 50;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
           0 4px 6px -2px rgba(0, 0, 0, 0.05);
       }
       .hamburger-line {
@@ -112,6 +113,72 @@
       }
       .hamburger-active .hamburger-line:nth-child(3) {
         transform: translateY(-7px) rotate(-45deg);
+      }
+
+      /* Modal styles */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        animation: fadeIn 0.3s ease-out;
+        padding: 1rem;
+        overflow-y: auto;
+      }
+      .modal.active {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 2rem;
+      }
+      .modal-content {
+        background-color: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        max-width: 500px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        animation: slideUp 0.3s ease-out;
+      }
+
+      .modal-content.max-w-2xl {
+        max-width: 700px;
+      }
+
+      @media (max-width: 640px) {
+        .modal {
+          padding: 0.5rem;
+        }
+        .modal-content {
+          padding: 1.5rem;
+          border-radius: 0.75rem;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
@@ -244,7 +311,10 @@
           </h2>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Portfolio Item 1 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group portfolio-item cursor-pointer"
+              data-portfolio="produsen-seragam"
+            >
               <img
                 src="https://placehold.co/600x400/007BFF/FFFFFF?text=Campaign+Result+1"
                 alt="Campaign Result 1"
@@ -258,15 +328,18 @@
                   Strategi Instagram Ads yang inovatif menghasilkan peningkatan
                   penjualan 30% dalam 2 bulan untuk toko fashion online.
                 </p>
-                <a
-                  href="#"
+                <button
                   class="inline-block text-primary-blue hover:underline mt-3 text-sm"
-                  >Lihat Detail Proyek &rarr;</a
                 >
+                  Lihat Detail Proyek &rarr;
+                </button>
               </div>
             </div>
             <!-- Portfolio Item 2 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group portfolio-item cursor-pointer"
+              data-portfolio="madu-langit"
+            >
               <img
                 src="https://placehold.co/600x400/00FFFF/1A202C?text=Campaign+Result+2"
                 alt="Campaign Result 2"
@@ -280,15 +353,18 @@
                   Meningkatkan traffic organik sebesar 50% dan mencapai
                   peringkat halaman pertama di Google untuk kata kunci utama.
                 </p>
-                <a
-                  href="#"
+                <button
                   class="inline-block text-primary-blue hover:underline mt-3 text-sm"
-                  >Lihat Detail Proyek &rarr;</a
                 >
+                  Lihat Detail Proyek &rarr;
+                </button>
               </div>
             </div>
             <!-- Portfolio Item 3 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group portfolio-item cursor-pointer"
+              data-portfolio="kopilahdulu"
+            >
               <img
                 src="https://placehold.co/600x400/1A202C/00FFFF?text=Campaign+Result+3"
                 alt="Campaign Result 3"
@@ -302,15 +378,18 @@
                   Menciptakan kampanye TikTok yang viral dengan lebih dari 1
                   juta views dan ribuan UGC untuk produk minuman.
                 </p>
-                <a
-                  href="#"
+                <button
                   class="inline-block text-primary-blue hover:underline mt-3 text-sm"
-                  >Lihat Detail Proyek &rarr;</a
                 >
+                  Lihat Detail Proyek &rarr;
+                </button>
               </div>
             </div>
             <!-- Portfolio Item 4 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group portfolio-item cursor-pointer"
+              data-portfolio="basrengteh"
+            >
               <img
                 src="https://placehold.co/600x400/FF007B/FFFFFF?text=Campaign+Result+4"
                 alt="Campaign Result 4"
@@ -324,15 +403,18 @@
                   Membangun identitas brand baru dan strategi konten yang
                   konsisten untuk meningkatkan engagement.
                 </p>
-                <a
-                  href="#"
+                <button
                   class="inline-block text-primary-blue hover:underline mt-3 text-sm"
-                  >Lihat Detail Proyek &rarr;</a
                 >
+                  Lihat Detail Proyek &rarr;
+                </button>
               </div>
             </div>
             <!-- Portfolio Item 5 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group portfolio-item cursor-pointer"
+              data-portfolio="kayana"
+            >
               <img
                 src="https://placehold.co/600x400/7B00FF/FFFFFF?text=Campaign+Result+5"
                 alt="Campaign Result 5"
@@ -344,15 +426,18 @@
                   Membangun komunitas online yang aktif dan loyal di berbagai
                   platform media sosial.
                 </p>
-                <a
-                  href="#"
+                <button
                   class="inline-block text-primary-blue hover:underline mt-3 text-sm"
-                  >Lihat Detail Proyek &rarr;</a
                 >
+                  Lihat Detail Proyek &rarr;
+                </button>
               </div>
             </div>
             <!-- Portfolio Item 6 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group portfolio-item cursor-pointer"
+              data-portfolio="se7"
+            >
               <img
                 src="https://placehold.co/600x400/7B00FF/FFFFFF?text=Campaign+Result+6"
                 alt="Campaign Result 5"
@@ -364,15 +449,18 @@
                   Membangun komunitas online yang aktif dan loyal di berbagai
                   platform media sosial.
                 </p>
-                <a
-                  href="#"
+                <button
                   class="inline-block text-primary-blue hover:underline mt-3 text-sm"
-                  >Lihat Detail Proyek &rarr;</a
                 >
+                  Lihat Detail Proyek &rarr;
+                </button>
               </div>
             </div>
             <!-- Portfolio Item 7 -->
-            <div class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group">
+            <div
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group portfolio-item cursor-pointer"
+              data-portfolio="warlen"
+            >
               <img
                 src="https://placehold.co/600x400/00FF7B/1A202C?text=Campaign+Result+7"
                 alt="Campaign Result 6"
@@ -384,11 +472,11 @@
                   Meningkatkan tingkat buka email dan konversi melalui kampanye
                   email marketing yang personal.
                 </p>
-                <a
-                  href="#"
+                <button
                   class="inline-block text-primary-blue hover:underline mt-3 text-sm"
-                  >Lihat Detail Proyek &rarr;</a
                 >
+                  Lihat Detail Proyek &rarr;
+                </button>
               </div>
             </div>
           </div>
@@ -401,6 +489,56 @@
         </div>
       </section>
     </main>
+
+    <!-- Portfolio Detail Modal -->
+    <div id="portfolioModal" class="modal">
+      <div class="modal-content max-w-2xl">
+        <div class="flex justify-between items-start mb-4">
+          <h2 id="portfolioTitle" class="text-3xl font-bold text-gray-800"></h2>
+          <span
+            class="close-modal-portfolio cursor-pointer text-2xl text-gray-400 hover:text-gray-600"
+            >&times;</span
+          >
+        </div>
+        <img
+          id="portfolioImage"
+          src=""
+          alt="Portfolio"
+          class="w-full h-64 object-cover rounded-lg mb-6"
+        />
+        <p
+          id="portfolioDescription"
+          class="text-gray-600 mb-6 leading-relaxed text-sm md:text-base"
+        ></p>
+
+        <div class="mb-6">
+          <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3">
+            Hasil Kampanye
+          </h3>
+          <div
+            id="portfolioResults"
+            class="space-y-2 text-sm md:text-base"
+          ></div>
+        </div>
+
+        <div class="mb-6">
+          <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3">
+            Strategi yang Digunakan
+          </h3>
+          <div
+            id="portfolioStrategy"
+            class="space-y-2 text-sm md:text-base"
+          ></div>
+        </div>
+
+        <a
+          href="https://wa.me/+6281224215656"
+          class="inline-block bg-primary-blue text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300 text-sm md:text-base"
+        >
+          Konsultasi Sekarang
+        </a>
+      </div>
+    </div>
 
     <!-- Floating CTA Button -->
     <a
@@ -431,5 +569,6 @@
 
     <!-- Link to external JavaScript file -->
     <script src="js/main.js"></script>
+    <script src="js/portfolio.js"></script>
   </body>
 </html>
