@@ -554,5 +554,56 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  // --- Mobile Optimization: Prevent zoom on input focus ---
+  const inputs = document.querySelectorAll(
+    'input[type="text"], input[type="email"], input[type="tel"], textarea',
+  );
+  inputs.forEach((input) => {
+    input.addEventListener("focus", function () {
+      // Set viewport zoom to prevent iOS zoom
+      if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute(
+            "content",
+            "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no",
+          );
+      }
+    });
+
+    input.addEventListener("blur", function () {
+      // Restore viewport zoom
+      if (/iPhone|iPad|iPod/.test(navigator.userAgent)) {
+        document
+          .querySelector("meta[name=viewport]")
+          .setAttribute(
+            "content",
+            "width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0",
+          );
+      }
+    });
+  });
+
+  // --- Mobile Optimization: Handle orientation change ---
+  window.addEventListener("orientationchange", function () {
+    // Force viewport recalculation on orientation change
+    window.scrollTo(0, 0);
+    document.body.style.height = window.innerHeight + "px";
+    setTimeout(() => {
+      document.body.style.height = "auto";
+    }, 100);
+  });
+
+  // --- Mobile Optimization: Close mobile menu on window resize ---
+  window.addEventListener("resize", function () {
+    if (window.innerWidth >= 768 && mobileMenu) {
+      mobileMenu.classList.add("hidden");
+      if (hamburgerButton) {
+        hamburgerButton.classList.remove("hamburger-active");
+      }
+    }
+  });
+
   console.log("✅ Semua fitur interaktif telah diinisialisasi!");
-}); // End of DOMContentLoaded
+  console.log("✅ Mobile optimizations telah aktif!");
+});

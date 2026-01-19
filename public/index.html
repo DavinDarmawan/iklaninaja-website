@@ -2,7 +2,15 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <title>IklaninAja - Dari Usaha Kecil Jadi Brand Besar</title>
     <!-- New SEO meta tags -->
     <meta
@@ -358,7 +366,7 @@
         background: rgba(30, 60, 130, 0.5);
         backdrop-filter: blur(10px);
         border-radius: 1.25rem;
-        padding: 1.75rem 1.5rem;
+        padding: 1rem;
         border: 2px solid rgba(255, 255, 255, 0.4);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -366,7 +374,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 280px;
+        min-height: 200px;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       }
 
@@ -893,29 +901,29 @@
           class="container mx-auto text-center px-6 section-content py-0 relative z-10"
         >
           <h1
-            class="text-4xl md:text-6xl font-extrabold leading-tight mb-6 animate-fade-in glow-text"
+            class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 sm:mb-6 animate-fade-in glow-text"
           >
             Dari Usaha Kecil Jadi
             <span class="text-accent-neon">Brand Besar</span>
           </h1>
           <p
-            class="text-lg md:text-xl mb-10 max-w-3xl mx-auto opacity-0 animate-slide-up wave-effect"
+            class="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-10 max-w-3xl mx-auto opacity-0 animate-slide-up wave-effect px-2 sm:px-0"
           >
             Dengan desain profesional dan strategi digital yang tepat, kami
             bantu bisnis Anda bersinar.
           </p>
           <div
-            class="flex flex-col md:flex-row justify-center items-center gap-4"
+            class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4"
           >
             <a
               href="#layanan"
-              class="inline-block bg-primary-blue text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 btn-neon animate-shimmer pulsing-border"
+              class="w-full sm:w-auto inline-block bg-primary-blue text-white px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base lg:text-lg font-semibold hover:bg-blue-700 transition duration-300 transform hover:scale-105 btn-neon animate-shimmer pulsing-border"
             >
               Lihat Layanan Kami
             </a>
             <a
               href="https://wa.me/+6281224215656"
-              class="inline-block border border-primary-blue text-primary-blue px-8 py-4 rounded-full text-lg font-semibold hover:bg-primary-blue hover:text-white transition duration-300 transform hover:scale-105 float-up"
+              class="w-full sm:w-auto inline-block border border-primary-blue text-primary-blue px-6 sm:px-8 py-3 sm:py-4 rounded-full text-sm sm:text-base lg:text-lg font-semibold hover:bg-primary-blue hover:text-white transition duration-300 transform hover:scale-105 float-up"
               style="animation-delay: 0.2s"
             >
               Konsultasi Gratis
@@ -936,6 +944,7 @@
       <section
         id="statistik"
         class="py-12 md:py-16 text-white relative overflow-hidden stat-animated-bg"
+        data-aos="fade-up"
       >
         <!-- Background animation -->
         <div class="absolute top-0 left-0 w-full h-full opacity-20">
@@ -958,9 +967,17 @@
             Meskipun baru memulai, kami berkomitmen memberikan layanan
             berkualitas tinggi dengan fokus pada hasil yang terukur
           </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8"
+          >
             <!-- Stat Card 1 -->
-            <div class="stat-card" data-stat="100" data-progress="100">
+            <div
+              class="stat-card"
+              data-stat="100"
+              data-progress="100"
+              data-aos="zoom-in"
+              data-aos-delay="0"
+            >
               <div class="stat-icon"><i class="fas fa-certificate"></i></div>
               <div class="stat-number">100%</div>
               <p class="stat-label">Komitmen Kualitas</p>
@@ -1020,22 +1037,27 @@
       </section>
 
       <!-- Tentang Kami Section -->
-      <section id="tentang-kami" class="py-16 md:py-24 section-light-bg">
+      <section
+        id="tentang-kami"
+        class="py-16 md:py-24 section-light-bg"
+        data-aos="fade-up"
+      >
         <div
           class="container mx-auto px-6 flex flex-col md:flex-row items-center gap-12 section-content"
         >
           <div
             class="md:w-1/2 animate-slide-left"
             style="animation: slideLeft 0.8s ease-out forwards"
+            data-aos="fade-right"
           >
             <h2
-              class="text-3xl md:text-4xl font-bold text-gray-800 mb-6"
+              class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-4 sm:mb-6"
               style="animation: slideUp 0.8s ease-out 0.2s both"
             >
               Tentang <span class="text-iklanin-green">Iklanin</span>aja
             </h2>
             <p
-              class="text-gray-700 text-lg mb-4"
+              class="text-sm sm:text-base md:text-lg text-gray-700 mb-3 sm:mb-4"
               style="animation: slideUp 0.8s ease-out 0.3s both"
             >
               IklaninAja hadir sebagai mitra strategis Anda dalam menghadapi
@@ -1064,6 +1086,7 @@
           <div
             class="md:w-1/2 flex justify-center items-center animate-slide-right"
             style="animation: slideRight 0.8s ease-out forwards"
+            data-aos="fade-left"
           >
             <img
               src="images/Iklaninaja-ilustration.png"
@@ -1076,11 +1099,16 @@
       </section>
 
       <!-- Layanan Iklan Section -->
-      <section id="layanan" class="py-16 md:py-24 section-light-bg">
+      <section
+        id="layanan"
+        class="py-16 md:py-24 section-light-bg"
+        data-aos="fade-up"
+      >
         <div class="container mx-auto px-6 text-center section-content">
           <h2
             class="text-3xl md:text-4xl font-bold text-gray-800 mb-12"
             style="animation: slideUp 0.8s ease-out forwards"
+            data-aos="fade-down"
           >
             Layanan Digital Marketing Kami
           </h2>
@@ -1103,8 +1131,10 @@
               >
                 💡
               </div>
-              <h3 class="text-xl font-semibold mb-3">Digital Advertising</h3>
-              <p class="text-gray-600">
+              <h3 class="text-lg sm:text-xl font-semibold mb-2 sm:mb-3">
+                Digital Advertising
+              </h3>
+              <p class="text-sm sm:text-base text-gray-600">
                 Layanan iklan berbayar di berbagai platform digital untuk
                 meningkatkan jangkauan, awareness, dan konversi bisnis.
               </p>
@@ -1200,11 +1230,16 @@
       </section>
 
       <!-- Portofolio Section -->
-      <section id="portofolio" class="py-16 md:py-24 section-light-bg">
+      <section
+        id="portofolio"
+        class="py-16 md:py-24 section-light-bg"
+        data-aos="fade-up"
+      >
         <div class="container mx-auto px-6 text-center section-content">
           <h2
             class="text-3xl md:text-4xl font-bold text-gray-800 mb-12"
             style="animation: slideUp 0.8s ease-out forwards"
+            data-aos="fade-down"
           >
             Hasil Kerja Kami yang
             <span class="text-primary-blue">Mengagumkan</span>
@@ -1216,16 +1251,21 @@
             Lihatlah beberapa kampanye digital yang telah kami sukseskan untuk
             berbagai klien.
           </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            data-aos="fade-up"
+          >
             <!-- Portfolio Item 1 -->
             <div
               class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2"
               style="animation: slideUp 0.8s ease-out 0.3s both"
+              data-aos="zoom-in"
+              data-aos-delay="0"
             >
               <img
                 src="https://placehold.co/600x400/007BFF/FFFFFF?text=Campaign+1"
                 alt="Campaign Result 1"
-                class="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110"
+                class="w-full h-40 sm:h-48 md:h-56 object-cover transition-transform duration-300 group-hover:scale-110"
               />
               <div
                 class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center"
@@ -1315,11 +1355,16 @@
       </section>
 
       <!-- Official Partner With Section (Replacing Simulasi Harga) -->
-      <section id="official-partners" class="py-16 md:py-24 section-light-bg">
+      <section
+        id="official-partners"
+        class="py-16 md:py-24 section-light-bg"
+        data-aos="fade-up"
+      >
         <div class="container mx-auto px-6 text-center section-content">
           <h2
             class="text-3xl md:text-4xl font-bold text-gray-800 mb-12"
             style="animation: slideUp 0.8s ease-out forwards"
+            data-aos="fade-down"
           >
             Official Partner With
           </h2>
@@ -1370,6 +1415,7 @@
       <section
         id="kontak"
         class="py-16 md:py-24 text-white text-center relative overflow-hidden section-dark-bg"
+        data-aos="fade-up"
       >
         <div class="container mx-auto px-6 section-content">
           <h2

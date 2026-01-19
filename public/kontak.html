@@ -2,7 +2,15 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5.0"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
     <title>Kontak Kami - IklaninAja</title>
     <!-- New SEO meta tags -->
     <meta
@@ -362,22 +370,30 @@
     </header>
 
     <main>
-      <section class="py-20 md:py-32 bg-dark-bg text-white text-center">
+      <section
+        class="py-20 md:py-32 bg-dark-bg text-white text-center"
+        data-aos="fade-up"
+      >
         <h1
           class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in"
+          data-aos="fade-down"
         >
           Hubungi Kami
         </h1>
-        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6 animate-slide-up">
+        <p
+          class="text-lg md:text-xl max-w-3xl mx-auto px-6 animate-slide-up"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           Kami siap membantu Anda. Jangan ragu untuk menghubungi kami untuk
           konsultasi gratis atau pertanyaan lainnya.
         </p>
       </section>
 
-      <section class="section-light-bg py-16 md:py-24">
+      <section class="section-light-bg py-16 md:py-24" data-aos="fade-up">
         <div class="section-content container mx-auto px-6">
           <!-- Contact Information (now full width) -->
-          <div class="max-w-3xl mx-auto">
+          <div class="max-w-3xl mx-auto" data-aos="fade-up">
             <!-- Added max-width and mx-auto for centering -->
             <h2
               class="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-8"
@@ -448,17 +464,17 @@
                 >
               </p>
             </div>
-            <div class="mt-10 text-center">
-              <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+            <div class="mt-8 sm:mt-10 text-center">
+              <h3 class="text-xl sm:text-2xl font-semibold text-gray-800 mb-4">
                 Chat Langsung
               </h3>
               <div
-                class="flex flex-col md:flex-row justify-center items-center gap-4"
+                class="flex flex-col sm:flex-row justify-center items-center gap-3 sm:gap-4"
               >
                 <a
                   href="https://wa.me/+6281224215656"
                   target="_blank"
-                  class="inline-flex items-center bg-green-500 text-white px-6 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition duration-300 transform hover:scale-105"
+                  class="w-full sm:w-auto inline-flex items-center justify-center bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-3 rounded-full text-base sm:text-lg font-semibold hover:bg-green-600 transition duration-300 transform hover:scale-105 min-h-12"
                 >
                   <span class="mr-2">💬</span> WhatsApp
                 </a>
@@ -479,12 +495,16 @@
       </section>
 
       <!-- Google Maps Section -->
-      <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-8">
+      <section class="py-12 sm:py-16 bg-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 text-center">
+          <h2
+            class="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-6 sm:mb-8"
+          >
             Temukan Kami di Peta
           </h2>
-          <div class="bg-white rounded-xl shadow-lg overflow-hidden h-96">
+          <div
+            class="bg-white rounded-xl shadow-lg overflow-hidden h-64 sm:h-80 md:h-96"
+          >
             <!-- Google Maps iframe with updated src -->
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.916972041285!2d107.6763618!3d-6.9506705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68c32dc2b99151%3A0x3e8b8cf2b6b51134!2sKopilahdulu+Coffee!5e0!3m2!1sen!2sid!4v1678901234567!5m2!1sen!2sid"
