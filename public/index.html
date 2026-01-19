@@ -1219,8 +1219,7 @@
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Portfolio Item 1 -->
             <div
-              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 portfolio-item cursor-pointer"
-              data-portfolio="produsen-seragam"
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2"
               style="animation: slideUp 0.8s ease-out 0.3s both"
             >
               <img
@@ -1232,7 +1231,7 @@
                 class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center"
               >
                 <button
-                  class="portfolio-btn opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
+                  class="opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
                 >
                   Lihat Detail
                 </button>
@@ -1248,8 +1247,7 @@
             </div>
             <!-- Portfolio Item 2 -->
             <div
-              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 portfolio-item cursor-pointer"
-              data-portfolio="madu-langit"
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2"
               style="animation: slideUp 0.8s ease-out 0.4s both"
             >
               <img
@@ -1261,7 +1259,7 @@
                 class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center"
               >
                 <button
-                  class="portfolio-btn opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
+                  class="opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
                 >
                   Lihat Detail
                 </button>
@@ -1278,8 +1276,7 @@
             </div>
             <!-- Portfolio Item 3 -->
             <div
-              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 portfolio-item cursor-pointer"
-              data-portfolio="kopilahdulu"
+              class="bg-gray-100 rounded-xl shadow-lg overflow-hidden group relative transform transition duration-500 hover:shadow-2xl hover:-translate-y-2"
               style="animation: slideUp 0.8s ease-out 0.5s both"
             >
               <img
@@ -1291,7 +1288,7 @@
                 class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-30 transition duration-300 flex items-center justify-center"
               >
                 <button
-                  class="portfolio-btn opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
+                  class="opacity-0 group-hover:opacity-100 transition duration-300 bg-primary-blue text-white px-6 py-2 rounded-full"
                 >
                   Lihat Detail
                 </button>
@@ -1398,72 +1395,6 @@
         </div>
       </section>
     </main>
-
-    <!-- Service Detail Modal -->
-    <div id="serviceModal" class="modal">
-      <div class="modal-content">
-        <span class="close-modal">&times;</span>
-        <h2 id="modalTitle" class="text-2xl font-bold text-gray-800 mb-4"></h2>
-        <p id="modalDescription" class="text-gray-600 mb-6"></p>
-        <div id="modalFeatures" class="mb-6"></div>
-        <a
-          href="kontak.html"
-          class="inline-block bg-primary-blue text-white px-6 py-2 rounded-full font-semibold hover:bg-blue-700 transition duration-300"
-        >
-          Hubungi Kami
-        </a>
-      </div>
-    </div>
-
-    <!-- Portfolio Detail Modal -->
-    <div id="portfolioModal" class="modal">
-      <div class="modal-content max-w-2xl">
-        <div class="flex justify-between items-start mb-4">
-          <h2 id="portfolioTitle" class="text-3xl font-bold text-gray-800"></h2>
-          <span
-            class="close-modal-portfolio cursor-pointer text-2xl text-gray-400 hover:text-gray-600"
-            >&times;</span
-          >
-        </div>
-        <img
-          id="portfolioImage"
-          src=""
-          alt="Portfolio"
-          class="w-full h-64 object-cover rounded-lg mb-6"
-        />
-        <p
-          id="portfolioDescription"
-          class="text-gray-600 mb-6 leading-relaxed text-sm md:text-base"
-        ></p>
-
-        <div class="mb-6">
-          <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3">
-            Hasil Kampanye
-          </h3>
-          <div
-            id="portfolioResults"
-            class="space-y-2 text-sm md:text-base"
-          ></div>
-        </div>
-
-        <div class="mb-6">
-          <h3 class="text-lg md:text-xl font-semibold text-gray-800 mb-3">
-            Strategi yang Digunakan
-          </h3>
-          <div
-            id="portfolioStrategy"
-            class="space-y-2 text-sm md:text-base"
-          ></div>
-        </div>
-
-        <a
-          href="https://wa.me/+6281224215656"
-          class="inline-block bg-primary-blue text-white px-6 py-2 md:px-8 md:py-3 rounded-full font-semibold hover:bg-blue-700 transition duration-300 text-sm md:text-base"
-        >
-          Konsultasi Sekarang
-        </a>
-      </div>
-    </div>
 
     <!-- Floating CTA Button -->
     <a
