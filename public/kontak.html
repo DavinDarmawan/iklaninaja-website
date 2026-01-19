@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
@@ -23,10 +23,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <!-- Font Awesome CDN for icons -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <style>
       /* Custom colors for Tailwind */
@@ -99,7 +103,8 @@
         bottom: 1.5rem;
         right: 1.5rem;
         z-index: 50;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+        box-shadow:
+          0 10px 15px -3px rgba(0, 0, 0, 0.1),
           0 4px 6px -2px rgba(0, 0, 0, 0.05);
       }
       .hamburger-line {
@@ -119,8 +124,84 @@
         transform: translateY(-7px) rotate(-45deg);
       }
 
+      @keyframes float-blob {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        25% {
+          transform: translateY(-20px) translateX(10px);
+        }
+        50% {
+          transform: translateY(-40px) translateX(-10px);
+        }
+        75% {
+          transform: translateY(-20px) translateX(10px);
+        }
+      }
+
+      @keyframes float-blob-slow {
+        0%,
+        100% {
+          transform: translateY(0px) translateX(0px);
+        }
+        25% {
+          transform: translateY(15px) translateX(-15px);
+        }
+        50% {
+          transform: translateY(30px) translateX(15px);
+        }
+        75% {
+          transform: translateY(15px) translateX(-15px);
+        }
+      }
+
+      .section-light-bg {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-light-bg::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        right: -10%;
+        width: 500px;
+        height: 500px;
+        background: radial-gradient(
+          circle,
+          rgba(0, 123, 255, 0.15) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float-blob 25s ease-in-out infinite;
+        z-index: 1;
+      }
+
+      .section-light-bg::after {
+        content: "";
+        position: absolute;
+        bottom: -20%;
+        left: -5%;
+        width: 400px;
+        height: 400px;
+        background: radial-gradient(
+          circle,
+          rgba(40, 110, 121, 0.12) 0%,
+          transparent 70%
+        );
+        border-radius: 50%;
+        animation: float-blob-slow 30s ease-in-out infinite;
+        z-index: 1;
+      }
+
+      .section-content {
+        position: relative;
+        z-index: 10;
+      }
+
       /* Custom alignment for contact info */
-      .contact-item {
         display: flex;
         align-items: flex-start; /* Align icon and text at the top */
         text-align: left; /* Ensure text aligns left */
@@ -155,42 +236,68 @@
           <li>
             <a
               href="index.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Home</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Home
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="tentang-kami.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Tentang Kami</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Tentang Kami
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="layanan.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Layanan Kami</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Layanan Kami
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="portofolio.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Portofolio</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Portofolio
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="testimoni.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Testimoni</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Testimoni
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
-            <a href="kontak.html" class="text-primary-blue font-semibold"
-              >Kontak</a
+            <a
+              href="kontak.html"
+              class="text-primary-blue font-semibold relative group"
             >
+              Kontak
+              <span
+                class="absolute bottom-0 left-0 w-full h-1 bg-primary-blue"
+              ></span>
+            </a>
           </li>
         </ul>
 
@@ -253,17 +360,19 @@
 
     <main>
       <section class="py-20 md:py-32 bg-dark-bg text-white text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+        <h1
+          class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in"
+        >
           Hubungi Kami
         </h1>
-        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6">
+        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6 animate-slide-up">
           Kami siap membantu Anda. Jangan ragu untuk menghubungi kami untuk
           konsultasi gratis atau pertanyaan lainnya.
         </p>
       </section>
 
-      <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6">
+      <section class="section-light-bg py-16 md:py-24">
+        <div class="section-content container mx-auto px-6">
           <!-- Contact Information (now full width) -->
           <div class="max-w-3xl mx-auto">
             <!-- Added max-width and mx-auto for centering -->
@@ -418,5 +527,13 @@
 
     <!-- Link to external JavaScript file -->
     <script src="js/main.js"></script>
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
   </body>
 </html>

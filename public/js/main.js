@@ -324,29 +324,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // --- Portfolio Modal dengan Detail Lengkap ---
-  document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOMContentLoaded - Initializing Portfolio Modal");
+  console.log("Initializing Portfolio Modal");
 
-    const portfolioModal = document.getElementById("portfolioModal");
-    const closePortfolioModal = document.querySelector(
-      ".close-modal-portfolio",
-    );
+  const portfolioModal = document.getElementById("portfolioModal");
+  const closePortfolioModal = document.querySelector(".close-modal-portfolio");
 
-    console.log("Portfolio Modal Elements:", {
-      portfolioModal: !!portfolioModal,
-      closePortfolioModal: !!closePortfolioModal,
-    });
+  console.log("Portfolio Modal Elements:", {
+    portfolioModal: !!portfolioModal,
+    closePortfolioModal: !!closePortfolioModal,
+  });
 
-    if (!portfolioModal) {
-      console.error(
-        "❌ Portfolio Modal element dengan id 'portfolioModal' TIDAK ditemukan!",
-      );
-      return;
-    }
-    if (!closePortfolioModal) {
-      console.warn("⚠️ Close button '.close-modal-portfolio' TIDAK ditemukan!");
-    }
-
+  if (portfolioModal) {
     const portfolioData = {
       "produsen-seragam": {
         title: "Produsen Seragam",
@@ -484,6 +472,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log("Attaching listener to portfolio item:", dataPortfolio);
 
       item.addEventListener("click", function (e) {
+        e.preventDefault();
         e.stopPropagation();
         console.log("📌 Portfolio item CLICKED:", dataPortfolio);
 
@@ -533,12 +522,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     if (closePortfolioModal) {
-      closePortfolioModal.addEventListener("click", () => {
+      closePortfolioModal.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
         console.log("Close button clicked");
         portfolioModal.classList.remove("active");
       });
-    } else {
-      console.warn("⚠️ Close button not found, setting up alternative close");
     }
 
     window.addEventListener("click", (event) => {
@@ -555,7 +544,7 @@ document.addEventListener("DOMContentLoaded", function () {
       portfolioItems: portfolioItems.length,
       portfolioDataKeys: Object.keys(portfolioData).length,
     });
-  });
+  }
 
   // --- Logo hover scale on partner section ---
   const partnerImages = document.querySelectorAll("#official-partners img");

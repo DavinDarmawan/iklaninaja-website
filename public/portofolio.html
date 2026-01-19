@@ -23,164 +23,16 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <style>
-      /* Custom colors for Tailwind */
-      :root {
-        --color-primary-blue: #007bff; /* Electric Blue */
-        --color-accent-neon: #00ffff; /* Neon */
-        --color-dark-bg: #1a202c; /* Dark background for futuristic feel */
-        --color-iklanin-green: #286e79; /* Custom color for 'Iklanin' */
-      }
-      .bg-primary-blue {
-        background-color: var(--color-primary-blue);
-      }
-      .text-primary-blue {
-        color: var(--color-primary-blue);
-      }
-      .border-primary-blue {
-        border-color: var(--color-primary-blue);
-      }
-      .bg-accent-neon {
-        background-color: var(--color-accent-neon);
-      }
-      .text-accent-neon {
-        color: var(--color-accent-neon);
-      }
-      .bg-dark-bg {
-        background-color: var(--color-dark-bg);
-      }
-      .text-iklanin-green {
-        color: var(--color-iklanin-green);
-      } /* New class for custom color */
-
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #f8fafc;
-        color: #333;
-      }
-      html {
-        scroll-behavior: smooth;
-      }
-      .btn-neon {
-        position: relative;
-        overflow: hidden;
-        z-index: 1;
-        transition: color 0.4s ease-in-out;
-      }
-      .btn-neon::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          var(--color-accent-neon),
-          transparent
-        );
-        transition: left 0.4s ease-in-out;
-        z-index: -1;
-      }
-      .btn-neon:hover::before {
-        left: 100%;
-      }
-      .btn-neon:hover {
-        color: var(--color-dark-bg);
-      }
-      .floating-cta {
-        position: fixed;
-        bottom: 1.5rem;
-        right: 1.5rem;
-        z-index: 50;
-        box-shadow:
-          0 10px 15px -3px rgba(0, 0, 0, 0.1),
-          0 4px 6px -2px rgba(0, 0, 0, 0.05);
-      }
-      .hamburger-line {
-        width: 24px;
-        height: 3px;
-        background-color: #333;
-        margin: 4px 0;
-        transition: all 0.3s ease-in-out;
-      }
-      .hamburger-active .hamburger-line:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-      }
-      .hamburger-active .hamburger-line:nth-child(2) {
-        opacity: 0;
-      }
-      .hamburger-active .hamburger-line:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-      }
-
-      /* Modal styles */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        animation: fadeIn 0.3s ease-out;
-        padding: 1rem;
-        overflow-y: auto;
-      }
-      .modal.active {
-        display: flex;
-        align-items: flex-start;
-        justify-content: center;
-        padding-top: 2rem;
-      }
-      .modal-content {
-        background-color: white;
-        padding: 2rem;
-        border-radius: 1rem;
-        max-width: 500px;
-        width: 100%;
-        max-height: 85vh;
-        overflow-y: auto;
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-        animation: slideUp 0.3s ease-out;
-      }
-
-      .modal-content.max-w-2xl {
-        max-width: 700px;
-      }
-
-      @media (max-width: 640px) {
-        .modal {
-          padding: 0.5rem;
-        }
-        .modal-content {
-          padding: 1.5rem;
-          border-radius: 0.75rem;
-        }
-      }
-
-      @keyframes fadeIn {
-        from {
-          opacity: 0;
-        }
-        to {
-          opacity: 1;
-        }
-      }
-
-      @keyframes slideUp {
-        from {
-          opacity: 0;
-          transform: translateY(20px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-    </style>
+    <!-- Shared CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- AOS Animation CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Font Awesome Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style></style>
   </head>
   <body>
     <!-- Header Section (Copy from index.html for consistency) -->
@@ -197,42 +49,68 @@
           <li>
             <a
               href="index.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Home</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Home
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="tentang-kami.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Tentang Kami</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Tentang Kami
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="layanan.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Layanan Kami</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Layanan Kami
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
-            <a href="portofolio.html" class="text-primary-blue font-semibold"
-              >Portofolio</a
+            <a
+              href="portofolio.html"
+              class="text-primary-blue font-semibold relative group"
             >
+              Portofolio
+              <span
+                class="absolute bottom-0 left-0 w-full h-1 bg-primary-blue"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="testimoni.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Testimoni</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Testimoni
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
           <li>
             <a
               href="kontak.html"
-              class="text-gray-700 hover:text-primary-blue transition duration-300"
-              >Kontak</a
+              class="text-gray-700 hover:text-primary-blue transition duration-300 relative group"
             >
+              Kontak
+              <span
+                class="absolute bottom-0 left-0 w-0 h-1 bg-primary-blue group-hover:w-full transition-all duration-300"
+              ></span>
+            </a>
           </li>
         </ul>
 
@@ -295,17 +173,19 @@
 
     <main>
       <section class="py-20 md:py-32 bg-dark-bg text-white text-center">
-        <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
+        <h1
+          class="text-4xl md:text-6xl font-extrabold leading-tight mb-4 animate-fade-in"
+        >
           Portofolio Kami
         </h1>
-        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6">
+        <p class="text-lg md:text-xl max-w-3xl mx-auto px-6 animate-slide-up">
           Lihatlah studi kasus dan hasil nyata dari kampanye digital yang telah
           kami sukseskan.
         </p>
       </section>
 
-      <section class="py-16 md:py-24 bg-white">
-        <div class="container mx-auto px-6 text-center">
+      <section class="py-16 md:py-24 section-light-bg">
+        <div class="section-content container mx-auto px-6 text-center">
           <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
             Proyek Pilihan Kami
           </h2>
@@ -570,5 +450,13 @@
     <!-- Link to external JavaScript file -->
     <script src="js/main.js"></script>
     <script src="js/portfolio.js"></script>
+    <!-- AOS Animation Script -->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        once: true,
+      });
+    </script>
   </body>
 </html>

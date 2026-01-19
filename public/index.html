@@ -358,7 +358,7 @@
         background: rgba(30, 60, 130, 0.5);
         backdrop-filter: blur(10px);
         border-radius: 1.25rem;
-        padding: 2.5rem 2rem;
+        padding: 1.75rem 1.5rem;
         border: 2px solid rgba(255, 255, 255, 0.4);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
@@ -366,7 +366,7 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-height: 320px;
+        min-height: 280px;
         box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
       }
 
@@ -378,11 +378,11 @@
       }
 
       .stat-number {
-        font-size: 4.5rem;
+        font-size: 3.5rem;
         font-weight: 900;
         color: #ffff00;
         line-height: 1;
-        margin: 1rem 0 0.5rem 0;
+        margin: 0.75rem 0 0.4rem 0;
         display: block;
         text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
         letter-spacing: -1px;
@@ -390,13 +390,13 @@
 
       .stat-icon {
         font-size: 4.5rem;
-        margin-bottom: 1.2rem;
+        margin-bottom: 0.8rem;
         display: inline-block;
         animation: bounce-icon 2.5s ease-in-out infinite;
         color: #ffffff;
         opacity: 0.95;
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -406,7 +406,7 @@
       }
 
       .stat-icon i {
-        font-size: 3rem;
+        font-size: 2.5rem;
       }
 
       @keyframes bounce-icon {
@@ -422,28 +422,28 @@
       }
 
       .stat-label {
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         font-weight: 700;
-        margin-top: 0.5rem;
+        margin-top: 0.3rem;
         color: #ffffff;
         letter-spacing: 0.5px;
         text-align: center;
       }
 
       .stat-description {
-        font-size: 0.9rem;
-        margin-top: 0.75rem;
+        font-size: 0.8rem;
+        margin-top: 0.5rem;
         color: rgba(255, 255, 255, 0.9);
         text-align: center;
-        line-height: 1.5;
+        line-height: 1.4;
       }
 
       .progress-bar {
         width: 100%;
-        height: 6px;
+        height: 5px;
         background: rgba(255, 255, 255, 0.25);
         border-radius: 4px;
-        margin-top: 1.5rem;
+        margin-top: 0.8rem;
         overflow: hidden;
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
       }
@@ -644,11 +644,12 @@
         height: 500px;
         background: radial-gradient(
           circle,
-          rgba(0, 123, 255, 0.08) 0%,
+          rgba(0, 123, 255, 0.15) 0%,
           transparent 70%
         );
         border-radius: 50%;
         animation: float-blob 25s ease-in-out infinite;
+        z-index: 1;
       }
 
       .section-light-bg::after {
@@ -660,11 +661,12 @@
         height: 400px;
         background: radial-gradient(
           circle,
-          rgba(40, 110, 121, 0.05) 0%,
+          rgba(40, 110, 121, 0.12) 0%,
           transparent 70%
         );
         border-radius: 50%;
         animation: float-blob-slow 30s ease-in-out infinite;
+        z-index: 1;
       }
 
       .section-dark-bg {
@@ -892,10 +894,13 @@
         ></div>
       </section>
 
+      <!-- Spacing divider untuk smooth transition -->
+      <div class="h-4 bg-gradient-to-b from-blue-900 to-gray-100"></div>
+
       <!-- Statistics Section (NEW) -->
       <section
         id="statistik"
-        class="py-20 md:py-32 text-white relative overflow-hidden stat-animated-bg"
+        class="py-12 md:py-16 text-white relative overflow-hidden stat-animated-bg"
       >
         <!-- Background animation -->
         <div class="absolute top-0 left-0 w-full h-full opacity-20">
@@ -911,10 +916,10 @@
         </div>
 
         <div class="container mx-auto px-6 relative z-10">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-4">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-3">
             Komitmen Kami untuk Kesuksesan Anda
           </h2>
-          <p class="text-center text-lg opacity-90 mb-16 max-w-2xl mx-auto">
+          <p class="text-center text-lg opacity-90 mb-12 max-w-2xl mx-auto">
             Meskipun baru memulai, kami berkomitmen memberikan layanan
             berkualitas tinggi dengan fokus pada hasil yang terukur
           </p>
